@@ -2,3 +2,7 @@ djangorestframework==3.8.2
 markdown==2.6.11
 django-filter==1.1.0
 django==1.11.12
+BeautifulSoup==4.4.0
+PyPDF2==1.26.0
+Pillow==5.1.0
+python-docx==0.8.6
