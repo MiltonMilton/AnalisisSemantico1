@@ -1,8 +1,5 @@
-from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from gisiasw.models.models import Page
-from gisiasw.models.PageSerializer import PageSerializer
 from gisiasw.scrapper.Scrapper import Scrapper
 
 @api_view(['GET'])

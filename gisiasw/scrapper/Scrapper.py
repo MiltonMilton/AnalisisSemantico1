@@ -35,11 +35,6 @@ class Scrapper:
         tmpFileName = str(time.time())
         fileData = urllib.urlretrieve(url, tmpFileName)
 
-        #datatowrite = fileData.read()
-        #tmpFileName = '/tmp/' + str(time.time())+'.docx'
-        #with open(tmpFileName, 'wb') as f:
-            #f.write(datatowrite)
-
         documento = Documento()
 
         return documento.read(tmpFileName)

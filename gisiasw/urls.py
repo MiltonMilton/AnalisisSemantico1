@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from gisiasw.views import AnalizadorController
+from gisiasw.views.SemanticaController import SemanticaController
 
 
 urlpatterns = [
@@ -23,5 +24,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^search/html/$', AnalizadorController.buscarHTML),
     url(r'^search/doc/$', AnalizadorController.buscarDoc),
-    url(r'^search/pdf/$', AnalizadorController.buscarPDF)
+    url(r'^search/pdf/$', AnalizadorController.buscarPDF),
+    url(r'^analizar', SemanticaController),
+    #url(r'^analizar/(?P<process_id>[\w-]+)/$', SemanticaController.analizar)
 ]
