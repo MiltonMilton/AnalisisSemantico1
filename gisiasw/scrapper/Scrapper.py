@@ -12,10 +12,12 @@ class Scrapper:
 
         page = rq.get(url)
         soup = BeautifulSoup(page.content, 'html.parser')
+        #extrae tags sin contenido relevante para analisis
         [x.extract() for x in soup.find_all('script')]
         [x.extract() for x in soup.find_all('style')]
         [x.extract() for x in soup.find_all('meta')]
         [x.extract() for x in soup.find_all('noscript')]
+        #?
         [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
 
         return soup.getText()
