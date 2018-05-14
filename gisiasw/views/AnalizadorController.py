@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from gisiasw.scrapper.Scrapper import Scrapper
+import django
 
 @api_view(['GET'])
 def buscarHTML(request):
@@ -13,7 +14,8 @@ def buscarHTML(request):
 
     return Response({
         "status": "OK",
-        "content":scrapper.buscarHTML("", url)
+        "content":scrapper.buscarHTML("", url),
+        "token":django.middleware.csrf.get_token(request)
     })
 
 @api_view(['GET'])

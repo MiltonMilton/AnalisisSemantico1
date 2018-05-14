@@ -1,3 +1,4 @@
+import subprocess
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
@@ -12,12 +13,11 @@ class SemanticaController(viewsets.ModelViewSet):
     queryset = URL.objects.all()
     serializer_class = URLSerializer
 
-    @csrf_exempt
     def create(self, request, *args, **kwargs):
         print(request.data)
-        #wsrequest = URLSerializer(data=request.data)
+        wsrequest = URLSerializer(data=request.data)
         reponse = {}
-        #if(wsrequest.is_valid()):
-        #    response = wsrequest.data
+        if(wsrequest.is_valid()):
+            response = wsrequest.data
 
-        return Response(data=request.data)
+        return Response({"status":"ok", "data":response})
