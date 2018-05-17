@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from gisiasw.views import AnalizadorController
-from gisiasw.views.SemanticaController import SemanticaController
+from gisiasw.views import AnalizadorViewSet
+from gisiasw.views.SemanticaViewSet import SemanticaViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
-router.register(r'analizar', SemanticaController)
+router.register(r'analizar', SemanticaViewSet)
 
 urlpatterns = router.urls
 #urlpatterns = [
