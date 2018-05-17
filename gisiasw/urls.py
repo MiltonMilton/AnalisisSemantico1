@@ -15,13 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from gisiasw.views import AnalizadorController
+from gisiasw.views import AnalizadorViewSet
+from gisiasw.views.SemanticaViewSet import SemanticaViewSet
+from rest_framework.routers import DefaultRouter
 
+router = DefaultRouter()
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^search/html/$', AnalizadorController.buscarHTML),
-    url(r'^search/doc/$', AnalizadorController.buscarDoc),
-    url(r'^search/pdf/$', AnalizadorController.buscarPDF)
-]
+router.register(r'analizar', SemanticaViewSet)
+
+urlpatterns = router.urls
+#urlpatterns = [
+ #   url(r'^', include(router.urls))
+    #url(r'^admin/', admin.site.urls),
+    #url(r'^api-auth/', include('rest_framework.urls'))
+    #url(r'^analizar/(?P<process_id>[\w-]+)/$', SemanticaController.analizar)
+#]
+
+#router.register(r'search/html/$', AnalizadorController.buscarHTML)
+#router.register(r'search/doc/$', AnalizadorController.buscarDoc)
+#router.register(r'search/pdf/$', AnalizadorController.buscarPDF)

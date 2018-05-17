@@ -17,10 +17,12 @@ class Scrapper:
         [x.extract() for x in soup.find_all('style')]
         [x.extract() for x in soup.find_all('meta')]
         [x.extract() for x in soup.find_all('noscript')]
-        #?
+
         [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
 
-        return soup.getText()
+        cleanText = [x for x in soup.get_text().split('\n') if (x != "") and (x!=" ")]
+
+        return cleanText
 
     def buscarPDF(self, nombre, url):
         fileData = urllib.urlopen(url)
@@ -36,11 +38,6 @@ class Scrapper:
     def buscarDoc(self, nombre, url):
         tmpFileName = str(time.time())
         fileData = urllib.urlretrieve(url, tmpFileName)
-
-        #datatowrite = fileData.read()
-        #tmpFileName = '/tmp/' + str(time.time())+'.docx'
-        #with open(tmpFileName, 'wb') as f:
-            #f.write(datatowrite)
 
         documento = Documento()
 
