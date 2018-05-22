@@ -9,20 +9,25 @@ from gisiasw.readers.Documento import Documento
 class Scrapper:
 
     def buscarHTML(self, nombre, url):
+        try:
+            page = rq.get(url)
+            soup = BeautifulSoup(page.content, 'html.parser', from_encoding="utf-8")
+            #extrae tags sin contenido relevante para analisis
+            [x.extract() for x in soup.find_all('script')]
+            [x.extract() for x in soup.find_all('style')]
+            [x.extract() for x in soup.find_all('meta')]
+            [x.extract() for x in soup.find_all('noscript')]
 
-        page = rq.get(url)
-        soup = BeautifulSoup(page.content, 'html.parser')
-        #extrae tags sin contenido relevante para analisis
-        [x.extract() for x in soup.find_all('script')]
-        [x.extract() for x in soup.find_all('style')]
-        [x.extract() for x in soup.find_all('meta')]
-        [x.extract() for x in soup.find_all('noscript')]
+            [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
 
-        [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
+            cleanText = [x for x in soup.get_text().split('\n') if (x != "") and (x!=" ")]
 
-        cleanText = [x for x in soup.get_text().split('\n') if (x != "") and (x!=" ")]
+            print("cleanText", cleanText)
+            return cleanText
 
-        return cleanText
+        except Exception as e:
+            print "Error Retrieving data: ", url, ": ", str(e)
+            pass
 
     def buscarPDF(self, nombre, url):
         fileData = urllib.urlopen(url)

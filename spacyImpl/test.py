@@ -1,4 +1,4 @@
-import re
+'''import re
 import numpy as np
 import pandas as pd
 from pprint import pprint
@@ -9,13 +9,13 @@ import gensim.corpora as corpora
 from gensim.utils import simple_preprocess
 from gensim.models import CoherenceModel
 
-# spacy for lemmatization
+# spacyImpl for lemmatization
 import spacy
 
 # Plotting tools
-import pyLDAvis
-import pyLDAvis.gensim  # don't skip this
-import matplotlib.pyplot as plt
+#import pyLDAvis
+#import pyLDAvis.gensim  # don't skip this
+#import matplotlib.pyplot as plt
 #%matplotlib inline
 
 # Enable logging for gensim - optional
@@ -104,7 +104,7 @@ def make_trigrams(texts):
     return [trigram_mod[bigram_mod[doc]] for doc in texts]
 
 def lemmatization(texts, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV']):
-    """https://spacy.io/api/annotation"""
+    """https://spacyImpl.io/api/annotation"""
     texts_out = []
     for sent in texts:
         doc = nlp(" ".join(sent)) 
@@ -119,8 +119,8 @@ data_words_nostops = remove_stopwords(data_words)
 # Form Bigrams
 data_words_bigrams = make_bigrams(data_words_nostops)
 
-# Initialize spacy 'en' model, keeping only tagger component (for efficiency)
-# python3 -m spacy download en
+# Initialize spacyImpl 'en' model, keeping only tagger component (for efficiency)
+# python3 -m spacyImpl download en
 nlp = spacy.load('en', disable=['parser', 'ner'])
 
 # Do lemmatization keeping only noun, adj, vb, adv
@@ -175,4 +175,4 @@ doc_lda = lda_model[corpus]
 # # Visualize the topics
 # pyLDAvis.enable_notebook()
 # vis = pyLDAvis.gensim.prepare(lda_model, corpus, id2word)
-# vis
+# vis'''
