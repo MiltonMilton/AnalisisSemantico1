@@ -17,6 +17,7 @@ class TopicModeling:
     trigram_mod = []
 
     def analizar(self, text):
+        '''Metodo que inicializa el proceso de analisis'''
         try:
             # en el tutorial utiliza str(sentencia) pero tira un unicodeError, por eso lo cambie por encode
             data_words = list(self.sent_to_words(text))
@@ -102,7 +103,4 @@ class TopicModeling:
 
         for sentence in sentences:
             print("SENTENCE: ", sentence)
-            try:
-                yield (gensim.utils.simple_preprocess(sentence.encode('ascii', 'ignore'), deacc=True))  # deacc=True removes punctuations
-            finally:
-                pass
+            yield (gensim.utils.simple_preprocess(sentence.encode('ascii', 'ignore'), deacc=True))  # deacc=True removes punctuations
