@@ -32,19 +32,21 @@ class AnalisisSemanticoManager():
 
         for document in documents.get("documentos"):
             for url in document.get("urls"):
+                #Procesa el documento y obtiene el texto. Arreglo de oraciones
                 processedDocuments.append(self.procesarDocumento(url))
-        #Obtiene por cada url una cadena de strings
-        #Analiza el contenido
-        #Ejecuta el algoritmo de analisis semantico
-        #prepara la salida
-        #retorna una entidad
+                #Aplicamos topicModeling para obtener los temas relevantes
+                #Aplicamos similaridad Semantica de las clave en el documento
+                #Aplicamos otros algoritmos si encontramos
+                #ponderamos resultdos. reemplazando en el topicmodeling la similaridad de la clave.
+
+        
 
         return processedDocuments
+
+    #def otrometodo(self):
+        #"topics": topicModeling.analizar(text),
 
     def procesarDocumento(self, document):
         text = scrapper.buscarHTML("",str(document.get("url")))
 
-        return {
-            "document": document.get("url"),
-            "topics": topicModeling.analizar(text)
-        }
+        return text

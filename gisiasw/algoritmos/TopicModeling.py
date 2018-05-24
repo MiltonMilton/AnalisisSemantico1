@@ -10,6 +10,7 @@ stop_words = stopwords.words('english')
 stop_words.extend(['from', 'subject', 're', 'edu', 'use'])
 nlp = spacy.load('en', disable=['parser', 'ner'])
 
+
 class TopicModeling:
     bigram = []
     trigram = []
