@@ -11,15 +11,8 @@ from spacy.lang.en import English
 parser = English()
 nltk.download('stopwords')
 en_stop = set(nltk.corpus.stopwords.words('english'))
-import random
-from gensim import corpora
-import gensim
 from gisiasw.scrapper.Scrapper import Scrapper
-import time
-from datetime import  datetime
-import asyncore
-import spacyImpl.test
-
+from gisiasw.algoritmos.Synonim import getSinonimo
 
 scrapper = Scrapper()
 topicModeling = TopicModeling()
@@ -33,8 +26,17 @@ class AnalisisSemanticoManager():
         for document in documents.get("documentos"):
             for url in document.get("urls"):
                 #Procesa el documento y obtiene el texto. Arreglo de oraciones
-                processedDocuments.append(self.procesarDocumento(url))
                 #Aplicamos topicModeling para obtener los temas relevantes
+                topicos = self.procesarDocumento(url)
+                print(topicos)
+                for i in range(len(topicos)):
+                    print(topicos[i])
+                    topico = topicos[i]
+                    processedDocuments.append({
+                        "word": topico.get('word'),
+                        "ponderacion":topico.get('ponderacion'),
+                        "sinonimos": getSinonimo(topico.get('word'))
+                    })
                 #Aplicamos similaridad Semantica de las clave en el documento
                 #Aplicamos otros algoritmos si encontramos
                 #ponderamos resultdos. reemplazando en el topicmodeling la similaridad de la clave.
@@ -49,4 +51,4 @@ class AnalisisSemanticoManager():
     def procesarDocumento(self, document):
         text = scrapper.buscarHTML("",str(document.get("url")))
 
-        return text
+        return topicModeling.analizar(text)
