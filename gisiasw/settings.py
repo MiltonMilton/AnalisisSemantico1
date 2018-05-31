@@ -25,7 +25,7 @@ SECRET_KEY = 'w_#(89)o=0s4n7tgu$)aym=w3%%cpr$y2w+jnqfmk8n!t)*5r%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CSRF_TRUSTED_ORIGINS= ['http://localhost:8000']
-ALLOWED_HOSTS = ['http://localhost:8000']
+ALLOWED_HOSTS = ['http://localhost:8000',u'localhost']
 
 
 # Application definition
