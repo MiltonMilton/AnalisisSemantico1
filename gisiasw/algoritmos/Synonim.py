@@ -13,6 +13,14 @@ def getSinonimo(word):
 
     return sinonimos
 
+def getListaSinonimos(word):
+    list = []
+    syns = wn.synsets(word)
+    for ss in range(len(syns)):
+        for l in range(len(syns[ss].lemmas())):
+            list.append(syns[ss].lemmas()[l].name())
+    return list
+
 def getHipernimo(hypernimos):
     return [l.lemma_names()for l in hypernimos],
 
