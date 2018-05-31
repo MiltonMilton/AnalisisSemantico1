@@ -10,6 +10,8 @@ stop_words = stopwords.words('english')
 stop_words.extend(['from', 'subject', 're', 'edu', 'use'])
 nlp = spacy.load('en', disable=['parser', 'ner'])
 
+
+
 class TopicModeling:
     bigram = []
     trigram = []
@@ -76,7 +78,8 @@ class TopicModeling:
             #pprint(lda_model.print_topics())
             doc_lda = lda_model[corpus]
             #print(doc_lda[1])
-            return lda_model.print_topics()
+
+            return self.format_topics(lda_model.show_topics(1,10,False, False))
         except Exception as e:
             print "Error en TopicMOdeling: ", text, ": ", str(e)
             pass
@@ -102,5 +105,16 @@ class TopicModeling:
     def sent_to_words(self, sentences):
 
         for sentence in sentences:
-            print("SENTENCE: ", sentence)
+            #print("SENTENCE: ", sentence)
             yield (gensim.utils.simple_preprocess(sentence.encode('ascii', 'ignore'), deacc=True))  # deacc=True removes punctuations
+
+    def format_topics(self, topics):
+        topics_formated = []
+        for t in enumerate(topics):
+            for j in enumerate(t[1][1]):
+                topics_formated.append({
+                    "word": j[1][0],
+                    "ponderacion":j[1][1]
+                })
+
+        return topics_formated

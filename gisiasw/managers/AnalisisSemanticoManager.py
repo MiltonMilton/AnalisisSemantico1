@@ -11,15 +11,8 @@ from spacy.lang.en import English
 parser = English()
 nltk.download('stopwords')
 en_stop = set(nltk.corpus.stopwords.words('english'))
-import random
-from gensim import corpora
-import gensim
 from gisiasw.scrapper.Scrapper import Scrapper
-import time
-from datetime import  datetime
-import asyncore
-import spacyImpl.test
-
+from gisiasw.algoritmos.Synonim import getSinonimo
 
 scrapper = Scrapper()
 topicModeling = TopicModeling()
@@ -32,19 +25,30 @@ class AnalisisSemanticoManager():
 
         for document in documents.get("documentos"):
             for url in document.get("urls"):
-                processedDocuments.append(self.procesarDocumento(url))
-        #Obtiene por cada url una cadena de strings
-        #Analiza el contenido
-        #Ejecuta el algoritmo de analisis semantico
-        #prepara la salida
-        #retorna una entidad
+                #Procesa el documento y obtiene el texto. Arreglo de oraciones
+                #Aplicamos topicModeling para obtener los temas relevantes
+                topicos = self.procesarDocumento(url)
+                print(topicos)
+                for i in range(len(topicos)):
+                    print(topicos[i])
+                    topico = topicos[i]
+                    processedDocuments.append({
+                        "word": topico.get('word'),
+                        "ponderacion":topico.get('ponderacion'),
+                        "sinonimos": getSinonimo(topico.get('word'))
+                    })
+                #Aplicamos similaridad Semantica de las clave en el documento
+                #Aplicamos otros algoritmos si encontramos
+                #ponderamos resultdos. reemplazando en el topicmodeling la similaridad de la clave.
+
+        
 
         return processedDocuments
+
+    #def otrometodo(self):
+        #"topics": topicModeling.analizar(text),
 
     def procesarDocumento(self, document):
         text = scrapper.buscarHTML("",str(document.get("url")))
 
-        return {
-            "document": document.get("url"),
-            "topics": topicModeling.analizar(text)
-        }
+        return topicModeling.analizar(text)
