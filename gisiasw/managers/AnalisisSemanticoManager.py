@@ -12,7 +12,7 @@ parser = English()
 nltk.download('stopwords')
 en_stop = set(nltk.corpus.stopwords.words('english'))
 from gisiasw.scrapper.Scrapper import Scrapper
-from gisiasw.algoritmos.Synonim import getSinonimo
+from gisiasw.algoritmos.Synonim import getSinonimo, getListaSinonimos
 from gisiasw.formatter.formatter import format
 
 scrapper = Scrapper()
@@ -44,7 +44,7 @@ class AnalisisSemanticoManager():
                     processedDocuments.append({
                         "word": topico.get('word'),
                         "ponderacion":topico.get('ponderacion'),
-                        "sinonimos": getSinonimo(topico.get('word')),
+                        "sinonimos": getListaSinonimos(topico.get('word')),
                         "tipo": "TOPIC"
                     })
                 #Aplicamos similaridad Semantica de las clave en el documento
