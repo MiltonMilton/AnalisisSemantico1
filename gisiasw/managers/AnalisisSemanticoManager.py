@@ -13,6 +13,7 @@ nltk.download('stopwords')
 en_stop = set(nltk.corpus.stopwords.words('english'))
 from gisiasw.scrapper.Scrapper import Scrapper
 from gisiasw.algoritmos.Synonim import getSinonimo
+from gisiasw.formatter.formatter import format
 
 scrapper = Scrapper()
 topicModeling = TopicModeling()
@@ -24,6 +25,14 @@ class AnalisisSemanticoManager():
         processedDocuments = []
 
         for document in documents.get("documentos"):
+            for clave in document.get('claves'):
+                processedDocuments.append({
+                        "word": clave,
+                        "ponderacion": 0,
+                        "sinonimos": getSinonimo(clave),
+                        "tipo": "CLAVE"
+                    })
+
             for url in document.get("urls"):
                 #Procesa el documento y obtiene el texto. Arreglo de oraciones
                 #Aplicamos topicModeling para obtener los temas relevantes
@@ -35,7 +44,8 @@ class AnalisisSemanticoManager():
                     processedDocuments.append({
                         "word": topico.get('word'),
                         "ponderacion":topico.get('ponderacion'),
-                        "sinonimos": getSinonimo(topico.get('word'))
+                        "sinonimos": getSinonimo(topico.get('word')),
+                        "tipo": "TOPIC"
                     })
                 #Aplicamos similaridad Semantica de las clave en el documento
                 #Aplicamos otros algoritmos si encontramos
@@ -43,7 +53,7 @@ class AnalisisSemanticoManager():
 
         
 
-        return processedDocuments
+        return format(processedDocuments)
 
     #def otrometodo(self):
         #"topics": topicModeling.analizar(text),

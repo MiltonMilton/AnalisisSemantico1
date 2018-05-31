@@ -7,8 +7,12 @@ def getSinonimo(word):
             sinonimos.append({
                 "word": l.name(),
                 "synset": l.synset().name(),
-                "hypernimos": getHipernimo(j.hypernyms()),
-                "hiponimos": [l.lemma_names() for l in j.hyponyms()],
+                #"hypernimos": getHipernimo(j.hypernyms()),
+                #"hiponimos": [l.lemma_names() for l in j.hyponyms()],
+                "tipo": l.synset().lexname().split('.')[0],
+                "distance": compareWords(word, l.name()),
+                "definition": l.synset().definition(),
+                "examples": l.synset().examples()
             })
 
     return sinonimos
