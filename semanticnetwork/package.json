@@ -1,0 +1,24 @@
+{
+  "name": "semanticnetwork",
+  "version": "1.0.0",
+  "description": "React app to show a semantic network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuel2287/semanticnetwork.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manuel2287/semanticnetwork/issues"
+  },
+  "homepage": "https://github.com/manuel2287/semanticnetwork#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react": "^16.4.0",
+    "vis": "^4.21.0"
+  }
+}
