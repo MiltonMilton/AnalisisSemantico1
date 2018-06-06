@@ -48,7 +48,7 @@ class TopicModeling:
                     aux.append(i)
             data_words_bigrams = aux
 
-            print(data_words_bigrams)
+            #print(data_words_bigrams)
 
             data_lemmatized = self.lemmatization(data_words_bigrams, allowed_postags=['NOUN', 'ADJ', 'VERB', 'ADV'])
 

@@ -25,7 +25,7 @@ class AnalisisSemanticoManager():
         processedDocuments = []
 
         for document in documents.get("documentos"):
-            for clave in document.get('claves'):
+            for clave in documents.get('claves'):
                 processedDocuments.append({
                         "word": clave,
                         "ponderacion": 0,
@@ -62,3 +62,10 @@ class AnalisisSemanticoManager():
         text = scrapper.buscarHTML("",str(document.get("url")))
 
         return topicModeling.analizar(text)
+
+    def procesarURL(self, url):
+        text = scrapper.buscarHTML("",url)
+
+        return topicModeling.analizar(text)
+
+    

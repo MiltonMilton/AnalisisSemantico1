@@ -22,7 +22,7 @@ class Scrapper:
 
             cleanText = [x for x in soup.get_text().split('\n') if (x != "") and (x!=" ")]
 
-            print("cleanText", cleanText)
+            #print("cleanText", cleanText)
             return cleanText
 
         except Exception as e:
