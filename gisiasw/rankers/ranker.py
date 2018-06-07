@@ -1,5 +1,5 @@
 from gisiasw.managers.AnalisisSemanticoManager import AnalisisSemanticoManager
-from gisiasw.algoritmos.Synonim import compareWordsSinonimos, synsetSinonimo, getListaSinonimos
+from gisiasw.algoritmos.Synonim import compareWords, synsetSinonimo, getListaSinonimos
 from gisiasw.scrapper.Scrapper import Scrapper
 
 def count_occurrences(word, listOfSentences):
@@ -14,34 +14,20 @@ analizador = AnalisisSemanticoManager()
 claves = ["dog","white","car","fruit","inmigrants"]
 url = "https://simple.wikipedia.org/wiki/Banana"
 #"http://www.bbc.com/news/health-44338276"
-
+valoraciones = []
 for i in analizador.procesarURL(url):
-    print i
-    print("RANKER TOPIC MODELLING Y SIMILARITY")
     subtopic = i.get("word") 
     subtopicPonderation = i.get("ponderacion")
-
-    valoraciones = []
-
     for clave in claves:
-            
-        # try:
-            try:
-                similaridad = compareWordsSinonimos(clave,subtopic)
-                valoracionClave = similaridad * subtopicPonderation
-                valoraciones.append({"clave": clave, "subtopico": subtopic, "valoracion": valoracionClave})
-            except Exception as e:
-                pass
-            
-            for valoracion in valoraciones:
-                print "clave: " + valoracion.get("clave") + ";  subtopico: " + valoracion.get("subtopico")+ "; valoracion: " + str(valoracion.get("valoracion"))
-                print("")
-            
-
-        # except Exception as e:
-        #     print "synset clave vacio:" + str(synsetSinonimo(clave) == []) 
-        #     print "synset subtopic vacio:" + str(synsetSinonimo(subtopic) == []) 
-        # pass
+        try:
+            similaridad = compareWords(clave,subtopic)
+            valoracionClave = similaridad * subtopicPonderation
+            valoraciones.append({"clave": clave, "subtopico": subtopic, "valoracion": valoracionClave})
+        except Exception as e:
+            pass
+print("RANKER TOPIC MODELLING Y SIMILARITY")        
+for valoracion in valoraciones:
+    print str(valoracion)  + "\n"            
 
 #RANKER DE SINONIMOS
 
@@ -64,7 +50,7 @@ for clave in claves:
 
 print("RANKER SINONIMOS")
 for valoracion in valoraciones:
-    print valoracion
-    print(" ")
+    print str(valoracion) + "\n"
+    
 
 
