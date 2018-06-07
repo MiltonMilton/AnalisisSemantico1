@@ -1,18 +1,23 @@
 from gisiasw.managers.AnalisisSemanticoManager import AnalisisSemanticoManager
-from gisiasw.algoritmos.Synonim import compareWords, synsetSinonimo, getListaSinonimos
+from gisiasw.algoritmos.Synonim import compareWords, getListaSinonimos
 from gisiasw.scrapper.Scrapper import Scrapper
+from pattern.text.en import singularize
 
-def count_occurrences(word, listOfSentences):
-    ocurrencias = 0
+
+
+
+def contiene(word, listOfSentences):
     for sentence in listOfSentences:
-        ocurrencias = ocurrencias + (sentence.lower().split().count(word))
-    return ocurrencias
+        if word in sentence.lower().split(): return True
+    return False
 
 #RANKER DE TOPIC MODELLING Y SIMILARITY
 
 analizador = AnalisisSemanticoManager()
 claves = ["dog","white","car","fruit","inmigrants"]
-url = "https://simple.wikipedia.org/wiki/Banana"
+claves = [singularize(clave) for clave in claves]
+print claves
+url = "https://www.bbc.com/news/world-us-canada-44374756?intlink_from_url=https://www.bbc.com/news/topics/c302m85qe1vt/uk-immigration&link_location=live-reporting-story"
 #"http://www.bbc.com/news/health-44338276"
 valoraciones = []
 for i in analizador.procesarURL(url):
@@ -39,11 +44,13 @@ listOfSentences = scrapper.buscarHTML("",url)
 for clave in claves:
     try:
         numerador = 0
-        for sinonimo in getListaSinonimos(clave):
-            numerador = numerador + (count_occurrences(sinonimo,listOfSentences))
-        #CORREGIR VER DOCUMENTO: BORRADOR METRICAS EN DRIVE
-        denominador = len(getListaSinonimos(clave))
-        valoracionClave = numerador
+        for word in getListaSinonimos(clave):
+            if contiene(word,listOfSentences): numerador = numerador + 1
+        denominador = len(getListaSinonimos(clave)) #esta lista no contiene duplicados
+        if denominador != 0: 
+            valoracionClave = float(numerador) / denominador 
+        else: 
+            valoracion = float(0)
         valoraciones.append({"clave":clave,"valoracion":valoracionClave})
     except Exception as e:
         pass  
