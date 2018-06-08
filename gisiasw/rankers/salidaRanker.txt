@@ -2,56 +2,14 @@
 [nltk_data]   Package wordnet is already up-to-date!
 [nltk_data] Downloading package stopwords to /home/milton/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!
-
+CLAVES DE BUSQUEDA: ['tea', 'production', 'technique']
+COMBINACION CLAVES: production AND tea AND  technique
 RANKER TOPIC MODELLING Y SIMILARITY
-
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.06644327, 'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'clave': 'tea', 'valoracion': 0.06644327193498611}
-
-{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.06644327, 'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'clave': 'production', 'valoracion': 0.01771820584932963}
-
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.06644327, 'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'clave': 'technique', 'valoracion': 0.015633711043526146}
-
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.041909195, 'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'clave': 'tea', 'valoracion': 0.041909195482730865}
-
-{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.041909195, 'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'clave': 'production', 'valoracion': 0.011175785462061563}
-
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.041909195, 'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'clave': 'technique', 'valoracion': 0.009860987172407262}
-
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.050736506, 'url': u'http://ujicha.kyoto/enpage/seiho/', 'clave': 'tea', 'valoracion': 0.050736505538225174}
-
-{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.050736506, 'url': u'http://ujicha.kyoto/enpage/seiho/', 'clave': 'production', 'valoracion': 0.01352973481019338}
-
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.050736506, 'url': u'http://ujicha.kyoto/enpage/seiho/', 'clave': 'technique', 'valoracion': 0.011938001303111805}
-
-{'similaridad': 0.5, 'subtopico': 'powder', 'ponderacion': 0.04105572, 'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'clave': 'tea', 'valoracion': 0.020527860149741173}
-
-{'similaridad': 0.18181818181818182, 'subtopico': 'powder', 'ponderacion': 0.04105572, 'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'clave': 'production', 'valoracion': 0.0074646764180877}
-
-{'similaridad': 0.15384615384615385, 'subtopico': 'powder', 'ponderacion': 0.04105572, 'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'clave': 'technique', 'valoracion': 0.006316264661458823}
-
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.048675865, 'url': u'https://taooftea.com/bottled-tea-production-video/', 'clave': 'tea', 'valoracion': 0.048675864934921265}
-
-{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.048675865, 'url': u'https://taooftea.com/bottled-tea-production-video/', 'clave': 'production', 'valoracion': 0.012980230649312337}
-
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.048675865, 'url': u'https://taooftea.com/bottled-tea-production-video/', 'clave': 'technique', 'valoracion': 0.01145314469056971}
-
 {'similaridad': 0.0, 'subtopico': '_', 'ponderacion': 0.012483027, 'url': u'http://www.fao.org/fileadmin/templates/agphome/scpi/SCPI_Compendium/Restoring_soil_fertility_and_enhancing_productivity_in_Indian_tea_plantations.pdf', 'clave': 'tea', 'valoracion': 0.0}
 
 {'similaridad': 0.0, 'subtopico': '_', 'ponderacion': 0.012483027, 'url': u'http://www.fao.org/fileadmin/templates/agphome/scpi/SCPI_Compendium/Restoring_soil_fertility_and_enhancing_productivity_in_Indian_tea_plantations.pdf', 'clave': 'production', 'valoracion': 0.0}
 
 {'similaridad': 0.0, 'subtopico': '_', 'ponderacion': 0.012483027, 'url': u'http://www.fao.org/fileadmin/templates/agphome/scpi/SCPI_Compendium/Restoring_soil_fertility_and_enhancing_productivity_in_Indian_tea_plantations.pdf', 'clave': 'technique', 'valoracion': 0.0}
-
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.043464027, 'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'clave': 'tea', 'valoracion': 0.04346402734518051}
-
-{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.043464027, 'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'clave': 'production', 'valoracion': 0.011590407292048136}
-
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.043464027, 'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'clave': 'technique', 'valoracion': 0.010226829963571885}
-
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.048730113, 'url': u'https://worldoftea.org/tea-processing-taiwan/', 'clave': 'tea', 'valoracion': 0.04873011261224747}
-
-{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.048730113, 'url': u'https://worldoftea.org/tea-processing-taiwan/', 'clave': 'production', 'valoracion': 0.012994696696599325}
-
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.048730113, 'url': u'https://worldoftea.org/tea-processing-taiwan/', 'clave': 'technique', 'valoracion': 0.01146590884994058}
 
 {'similaridad': 0.0, 'subtopico': 'ieee', 'ponderacion': 0.05177759, 'url': u'http://ieeexplore.ieee.org/document/7966846/', 'clave': 'tea', 'valoracion': 0.0}
 
@@ -59,9 +17,112 @@ RANKER TOPIC MODELLING Y SIMILARITY
 
 {'similaridad': 0.0, 'subtopico': 'ieee', 'ponderacion': 0.05177759, 'url': u'http://ieeexplore.ieee.org/document/7966846/', 'clave': 'technique', 'valoracion': 0.0}
 
-{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.11426667, 'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'clave': 'tea', 'valoracion': 0.11426667124032974}
+{'similaridad': 0.15384615384615385, 'subtopico': 'powder', 'ponderacion': 0.04105572, 'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'clave': 'technique', 'valoracion': 0.006316264661458823}
+
+{'similaridad': 0.18181818181818182, 'subtopico': 'powder', 'ponderacion': 0.04105572, 'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'clave': 'production', 'valoracion': 0.0074646764180877}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.041909195, 'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'clave': 'technique', 'valoracion': 0.009860987172407262}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.043464027, 'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'clave': 'technique', 'valoracion': 0.010226829963571885}
+
+{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.041909195, 'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'clave': 'production', 'valoracion': 0.011175785462061563}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.048675865, 'url': u'https://taooftea.com/bottled-tea-production-video/', 'clave': 'technique', 'valoracion': 0.01145314469056971}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.048730113, 'url': u'https://worldoftea.org/tea-processing-taiwan/', 'clave': 'technique', 'valoracion': 0.01146590884994058}
+
+{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.043464027, 'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'clave': 'production', 'valoracion': 0.011590407292048136}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.050736506, 'url': u'http://ujicha.kyoto/enpage/seiho/', 'clave': 'technique', 'valoracion': 0.011938001303111805}
+
+{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.048675865, 'url': u'https://taooftea.com/bottled-tea-production-video/', 'clave': 'production', 'valoracion': 0.012980230649312337}
+
+{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.048730113, 'url': u'https://worldoftea.org/tea-processing-taiwan/', 'clave': 'production', 'valoracion': 0.012994696696599325}
+
+{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.050736506, 'url': u'http://ujicha.kyoto/enpage/seiho/', 'clave': 'production', 'valoracion': 0.01352973481019338}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.06644327, 'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'clave': 'technique', 'valoracion': 0.015633711043526146}
+
+{'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.06644327, 'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'clave': 'production', 'valoracion': 0.01771820584932963}
+
+{'similaridad': 0.5, 'subtopico': 'powder', 'ponderacion': 0.04105572, 'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'clave': 'tea', 'valoracion': 0.020527860149741173}
+
+{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.11426667, 'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'clave': 'technique', 'valoracion': 0.026886275585959938}
 
 {'similaridad': 0.26666666666666666, 'subtopico': 'tea', 'ponderacion': 0.11426667, 'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'clave': 'production', 'valoracion': 0.0304711123307546}
 
-{'similaridad': 0.23529411764705882, 'subtopico': 'tea', 'ponderacion': 0.11426667, 'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'clave': 'technique', 'valoracion': 0.026886275585959938}
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.041909195, 'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'clave': 'tea', 'valoracion': 0.041909195482730865}
+
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.043464027, 'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'clave': 'tea', 'valoracion': 0.04346402734518051}
+
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.048675865, 'url': u'https://taooftea.com/bottled-tea-production-video/', 'clave': 'tea', 'valoracion': 0.048675864934921265}
+
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.048730113, 'url': u'https://worldoftea.org/tea-processing-taiwan/', 'clave': 'tea', 'valoracion': 0.04873011261224747}
+
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.050736506, 'url': u'http://ujicha.kyoto/enpage/seiho/', 'clave': 'tea', 'valoracion': 0.050736505538225174}
+
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.06644327, 'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'clave': 'tea', 'valoracion': 0.06644327193498611}
+
+{'similaridad': 1.0, 'subtopico': 'tea', 'ponderacion': 0.11426667, 'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'clave': 'tea', 'valoracion': 0.11426667124032974}
+
+RANKER SINONIMOS
+{'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.0}
+
+{'url': u'http://www.fao.org/fileadmin/templates/agphome/scpi/SCPI_Compendium/Restoring_soil_fertility_and_enhancing_productivity_in_Indian_tea_plantations.pdf', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.0}
+
+{'url': u'http://www.fao.org/fileadmin/templates/agphome/scpi/SCPI_Compendium/Restoring_soil_fertility_and_enhancing_productivity_in_Indian_tea_plantations.pdf', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.0}
+
+{'url': u'http://www.fao.org/fileadmin/templates/agphome/scpi/SCPI_Compendium/Restoring_soil_fertility_and_enhancing_productivity_in_Indian_tea_plantations.pdf', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.0}
+
+{'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.0}
+
+{'url': u'https://worldoftea.org/tea-processing-taiwan/', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.0}
+
+{'url': u'http://ieeexplore.ieee.org/document/7966846/', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.0}
+
+{'url': u'http://ieeexplore.ieee.org/document/7966846/', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.0}
+
+{'url': u'http://ieeexplore.ieee.org/document/7966846/', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.0}
+
+{'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.0}
+
+{'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'http://ujicha.kyoto/enpage/seiho/', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'https://taooftea.com/bottled-tea-production-video/', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'https://worldoftea.org/tea-processing-taiwan/', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'sinonimos': ['Camellia_sinensis', 'tea', 'afternoon_tea', 'teatime', 'tea_leaf'], 'clave': 'tea', 'valoracion': 0.2}
+
+{'url': u'http://ujicha.kyoto/enpage/seiho/', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.25}
+
+{'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.25}
+
+{'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.5}
+
+{'url': u'https://en.wikipedia.org/wiki/Tea_processing', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.5}
+
+{'url': u'http://www.ethicalteapartnership.org/for-business/global-tea-production/', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.5}
+
+{'url': u'http://ujicha.kyoto/enpage/seiho/', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.5}
+
+{'url': u'https://www.sciencedirect.com/science/article/pii/S0926669015305823', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.5}
+
+{'url': u'https://taooftea.com/bottled-tea-production-video/', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.5}
+
+{'url': u'https://taooftea.com/bottled-tea-production-video/', 'sinonimos': ['proficiency', 'technique'], 'clave': 'technique', 'valoracion': 0.5}
+
+{'url': u'http://www.madehow.com/Volume-5/Green-Tea.html', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.5}
+
+{'url': u'https://worldoftea.org/tea-processing-taiwan/', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.5}
+
+{'url': u'https://www.teatulia.com/tea-101/tea-processing.htm', 'sinonimos': ['output', 'product', 'production', 'yield'], 'clave': 'production', 'valoracion': 0.5}
 

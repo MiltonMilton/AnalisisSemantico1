@@ -17,6 +17,8 @@ def contruirClaveCompuestaAND(claves):
     return claveCompuestaAND
 
 
+
+
 #RANKER DE TOPIC MODELLING Y SIMILARITY
 
 analizador = AnalisisSemanticoManager()
@@ -28,9 +30,8 @@ urls=[]
 for result in engine.search(claveCompuestaAND):
         urls.append(result.url)
 
-scrapper = Scrapper()
-# for url in urls:
-#     print url + " " + str((analizador.procesarURL(url))[0]) + "\n"
+print "CLAVES DE BUSQUEDA: " + str(claves)
+print "COMBINACION CLAVES: " + str(claveCompuestaAND)
 
 valoraciones = []
 for url in urls:
@@ -44,33 +45,35 @@ for url in urls:
             valoraciones.append({"url":url ,"clave": clave, "subtopico": subtopic,"ponderacion":subtopicPonderation,"similaridad": similaridad, "valoracion":valoracionClave})
 
 print("RANKER TOPIC MODELLING Y SIMILARITY")        
+
+valoraciones = sorted(valoraciones, key=lambda k:k.get("valoracion"))
 for valoracion in valoraciones:
     print str(valoracion)  + "\n"            
-# 
 
-# 
-# 
-# valoraciones = []
-# 
-# scrapper = Scrapper()
-# listOfSentences = scrapper.buscarHTML("",url)
-# for clave in claves:
-    # try:
-        # numerador = 0
-        # for word in getListaSinonimos(clave):
-            # if contiene(word,listOfSentences): numerador = numerador + 1
-        # denominador = len(getListaSinonimos(clave)) #esta lista no contiene duplicados
-        # if denominador != 0: 
-            # valoracionClave = float(numerador) / denominador 
-        # else: 
-            # valoracion = float(0)
-        # valoraciones.append({"clave":clave,"valoracion":valoracionClave})
-    # except Exception as e:
-        # pass  
-# 
-# print("RANKER SINONIMOS")
-# for valoracion in valoraciones:
-    # print str(valoracion) + "\n"
-    # 
-# 
-# 
+valoraciones = []
+scrapper = Scrapper()
+
+for url in urls:
+    listOfSentences = scrapper.buscarHTML("",url)
+    for clave in claves:
+        try:
+            numerador = 0
+            sinonimos = getListaSinonimos(clave)
+            sinonimos = [str(word) for word in sinonimos]#de unicode a string
+            for word in sinonimos:
+                if contiene(word,listOfSentences): numerador = numerador + 1
+            denominador = len(sinonimos)
+            if denominador != 0: 
+                valoracionClave = float(numerador) / denominador 
+            else: 
+                valoracion = float(0)
+            valoraciones.append({"url":url,"clave":clave, "sinonimos":sinonimos,"valoracion":valoracionClave})
+        except Exception as e:
+            pass  
+
+print("RANKER SINONIMOS")
+
+valoraciones = sorted(valoraciones, key=lambda k:k.get("valoracion"))
+for valoracion in valoraciones:
+    print str(valoracion) + "\n"
+
