@@ -5,6 +5,7 @@ import urllib
 import time
 from gisiasw.readers.PDF import PDF
 from gisiasw.readers.Documento import Documento
+# from pattern.web import plaintext
 
 class Scrapper:
 
@@ -23,6 +24,7 @@ class Scrapper:
             cleanText = [x for x in soup.get_text().split('\n') if (x != "") and (x!=" ")]
 
             #print("cleanText", cleanText)
+            #return plaintext(soup.get_text())
             return cleanText
 
         except Exception as e:
