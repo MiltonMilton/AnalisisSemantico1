@@ -31,6 +31,19 @@ class Scrapper:
             print "Error Retrieving data: ", url, ": ", str(e)
             pass
 
+    def buscarHtmlCompleto(self, url):
+        page = rq.get(url)
+        soup = BeautifulSoup(page.content, 'html.parser', from_encoding="utf-8")
+        # extrae tags sin contenido relevante para analisis
+        [x.extract() for x in soup.find_all('script')]
+        [x.extract() for x in soup.find_all('style')]
+        [x.extract() for x in soup.find_all('meta')]
+        [x.extract() for x in soup.find_all('noscript')]
+
+        [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
+
+        return soup.get_text()
+
     def buscarPDF(self, nombre, url):
         fileData = urllib.urlopen(url)
         datatowrite = fileData.read()

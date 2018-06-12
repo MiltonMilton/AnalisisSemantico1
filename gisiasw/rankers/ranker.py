@@ -20,60 +20,59 @@ def contruirClaveCompuestaAND(claves):
 
 
 #RANKER DE TOPIC MODELLING Y SIMILARITY
+def ejecutar():
+    analizador = AnalisisSemanticoManager()
+    claves = ["tea","production","technique"]
+    claves = [singularize(clave) for clave in claves]
+    engine = Google(license="AIzaSyCvvHb8SYgHvS5gEIQabxuJ0Kl0sYdHl9U", language="en")
+    claveCompuestaAND = contruirClaveCompuestaAND(claves)
+    urls=[]
+    for result in engine.search(claveCompuestaAND):
+            urls.append(result.url)
 
-analizador = AnalisisSemanticoManager()
-claves = ["tea","production","technique"]
-claves = [singularize(clave) for clave in claves]
-engine = Google(license="AIzaSyCvvHb8SYgHvS5gEIQabxuJ0Kl0sYdHl9U", language="en")
-claveCompuestaAND = contruirClaveCompuestaAND(claves)
-urls=[]
-for result in engine.search(claveCompuestaAND):
-        urls.append(result.url)
+    print "CLAVES DE BUSQUEDA: " + str(claves)
+    print "COMBINACION CLAVES: " + str(claveCompuestaAND)
 
-print "CLAVES DE BUSQUEDA: " + str(claves)
-print "COMBINACION CLAVES: " + str(claveCompuestaAND)
+    valoraciones = []
+    for url in urls:
+            topicModel = analizador.procesarURL(url)[0]
+            subtopic = str(topicModel.get("word"))
+            subtopicPonderation = topicModel.get("ponderacion")
+            for clave in claves:
+                similaridad = compareWords(clave,subtopic)
+                valoracionClave = similaridad * subtopicPonderation
+                valoraciones.append({"url":url ,"clave": clave, "subtopico": subtopic,"ponderacion":subtopicPonderation,"similaridad": similaridad, "valoracion":valoracionClave})
 
-valoraciones = []
-for url in urls:
-    
-        topicModel = analizador.procesarURL(url)[0]
-        subtopic = str(topicModel.get("word")) 
-        subtopicPonderation = topicModel.get("ponderacion")
+    print("RANKER TOPIC MODELLING Y SIMILARITY")
+
+    valoraciones = sorted(valoraciones, key=lambda k:k.get("valoracion"))
+    for valoracion in valoraciones:
+        print str(valoracion)  + "\n"
+
+    valoraciones = []
+    scrapper = Scrapper()
+
+    for url in urls:
+        listOfSentences = scrapper.buscarHTML("",url)
         for clave in claves:
-            similaridad = compareWords(clave,subtopic)
-            valoracionClave = similaridad * subtopicPonderation
-            valoraciones.append({"url":url ,"clave": clave, "subtopico": subtopic,"ponderacion":subtopicPonderation,"similaridad": similaridad, "valoracion":valoracionClave})
+            try:
+                numerador = 0
+                sinonimos = getListaSinonimos(clave)
+                sinonimos = [str(word) for word in sinonimos]#de unicode a string
+                for word in sinonimos:
+                    if contiene(word,listOfSentences): numerador = numerador + 1
+                denominador = len(sinonimos)
+                if denominador != 0:
+                    valoracionClave = float(numerador) / denominador
+                else:
+                    valoracion = float(0)
+                valoraciones.append({"url":url,"clave":clave, "sinonimos":sinonimos,"valoracion":valoracionClave})
+            except Exception as e:
+                pass
 
-print("RANKER TOPIC MODELLING Y SIMILARITY")        
+    print("RANKER SINONIMOS")
 
-valoraciones = sorted(valoraciones, key=lambda k:k.get("valoracion"))
-for valoracion in valoraciones:
-    print str(valoracion)  + "\n"            
-
-valoraciones = []
-scrapper = Scrapper()
-
-for url in urls:
-    listOfSentences = scrapper.buscarHTML("",url)
-    for clave in claves:
-        try:
-            numerador = 0
-            sinonimos = getListaSinonimos(clave)
-            sinonimos = [str(word) for word in sinonimos]#de unicode a string
-            for word in sinonimos:
-                if contiene(word,listOfSentences): numerador = numerador + 1
-            denominador = len(sinonimos)
-            if denominador != 0: 
-                valoracionClave = float(numerador) / denominador 
-            else: 
-                valoracion = float(0)
-            valoraciones.append({"url":url,"clave":clave, "sinonimos":sinonimos,"valoracion":valoracionClave})
-        except Exception as e:
-            pass  
-
-print("RANKER SINONIMOS")
-
-valoraciones = sorted(valoraciones, key=lambda k:k.get("valoracion"))
-for valoracion in valoraciones:
-    print str(valoracion) + "\n"
+    valoraciones = sorted(valoraciones, key=lambda k:k.get("valoracion"))
+    for valoracion in valoraciones:
+        print str(valoracion) + "\n"
 

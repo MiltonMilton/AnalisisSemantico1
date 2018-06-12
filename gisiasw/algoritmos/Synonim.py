@@ -35,6 +35,7 @@ def compareWords(w1, w2):
         w2 = wn.synsets(w2)[0]
         return  w1.wup_similarity(w2)
     except Exception as e:
-        return float(0)
         print("no se puede calcular similaridad, se retorna 0,0")
+
+        return float(0)
     

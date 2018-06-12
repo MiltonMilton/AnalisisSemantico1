@@ -68,4 +68,6 @@ class AnalisisSemanticoManager():
 
         return topicModeling.analizar(text)
 
-    
+    def getDocumentsContent(self, url):
+
+        return scrapper.buscarHTML("",url)
