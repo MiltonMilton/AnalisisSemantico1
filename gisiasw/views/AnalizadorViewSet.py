@@ -1,47 +1,27 @@
-from rest_framework.decorators import api_view
+from gisiasw.serializers.URLSerializer import URLSerializer
+from gisiasw.models.models import URL
+from rest_framework import viewsets
 from rest_framework.response import Response
-from gisiasw.scrapper.Scrapper import Scrapper
-import django
+from gisiasw.managers.Analisis import Analisis
 
-@api_view(['GET'])
-def buscarHTML(request):
-    """
-       Busca dada una URL el contenido de una pagina, pdf o documento de texto y devuelve el contendio del mismo
-    """
+class AnalizadorViewSet(viewsets.ModelViewSet):
 
-    url = str(request.GET.get('url'))
-    scrapper=Scrapper()
 
-    return Response({
-        "status": "OK",
-        "content":scrapper.buscarHTML("", url),
-        "token":django.middleware.csrf.get_token(request)
-    })
+    queryset = URL.objects.all()
+    serializer_class = URLSerializer
 
-@api_view(['GET'])
-def buscarPDF(request):
-    """
-       Busca dada una URL el contenido de una pagina, pdf o documento de texto y devuelve el contendio del mismo
-    """
+    def create(self, request, *args, **kwargs):
 
-    url = str(request.GET.get('url'))
-    scrapper=Scrapper()
+        #wsrequest = URLSerializer(data=request.data)
+        #print(wsrequest)
+        reponse = {}
+        #if(wsrequest.is_valid()):
+        #    response = wsrequest.data
 
-    return Response({
-        "status": "OK",
-        "content":scrapper.buscarPDF("", url)
-    })
+        analizador = Analisis()
+        data = request.data
+        resultado = analizador.armarMatrizdeSimilitudes(data.get("claves"), data.get("metodo"), data.get("urls"))
+        response = Response({"status": "ok", "nodes": resultado})
+        response["Access-Control-Allow-Origin"] = "*"
 
-@api_view(['GET'])
-def buscarDoc(request):
-    """
-       Busca dada una URL el contenido de una pagina, pdf o documento de texto y devuelve el contendio del mismo
-    """
-
-    url = str(request.GET.get('url'))
-    scrapper=Scrapper()
-
-    return Response({
-        "status": "OK",
-        "content":scrapper.buscarDoc("", url)
-    })
+        return response

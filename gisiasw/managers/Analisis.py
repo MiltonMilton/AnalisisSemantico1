@@ -7,19 +7,19 @@ class Analisis:
     analisisClave = AnalizadorClave()
     analisisTopico = AnalizadorTopicos()
 
-    def armarMatrizdeSimilitudes(self, claves, metodo):
+    def armarMatrizdeSimilitudes(self, claves, metodo, urls):
         #busco los sinonimos de claves
-        claves, csinonimos = self.analisisClave.analizar(claves)
+        cclaves, csinonimos = self.analisisClave.analizar(claves)
         #busco los topicos y sus sinonimos
-        topicos, ctopicos = self.analisisTopico.analizar(claves)
+        topicos, ctopicos = self.analisisTopico.analizar(claves) if len(urls) == 0 else self.analisisTopico.analizar_con_urls(urls)
         #construyo la matriz
-        matriz = self.matrix.analizarClaveTopico(claves, topicos, "lch")
+        matriz = self.matrix.analizarClaveTopico(claves, topicos, metodo)
         #armo los encabezados
         encabezadoTopicos =  [topico.get("word") for j, topico in enumerate(topicos)]
         #retorno la matriz
 
         return {
-                "claves": claves,
+                "claves": cclaves,
                 "topicos": encabezadoTopicos,
                 "matriz": matriz
         }

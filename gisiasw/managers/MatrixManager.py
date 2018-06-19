@@ -3,8 +3,10 @@ from gisiasw.similaridad.similaridad import similaridad
 class MatrixManager:
 
     def analizarClaveTopico(self, claves, topicos, metodo):
-        matrizClaveTopico = []
-        for i in range(0, len(claves)-1):
+
+        m = []
+        for i in range(0, len(claves)):
+            matrizClaveTopico = []
             for j,topico in enumerate(topicos):
                 matrizClaveTopico.append({
                     "clave":claves[i],
@@ -14,6 +16,7 @@ class MatrixManager:
                     "fila": i+1,
                     "columna": j+1
                 })
+            m.append(matrizClaveTopico)
 
-        print(matrizClaveTopico)
-        return matrizClaveTopico
+        print(m)
+        return m

@@ -20,6 +20,17 @@ class AnalizadorTopicos:
         #busco los sinonimos de cada topico
         return topics, sinonimosTopicos
 
+    def analizar_con_urls(self, urls=[]):
+        print("TENGO URLS:", urls)
+        # analizo el contenido de los documentos
+        topics = self.analizar_una_url(urls[0]) if len(urls) == 1 else self.analizar_url(urls)
+        # aplico TopicModeling
+        # Extraigo los topicos mas relevantes
+        sinonimosTopicos = self.getSinonimos(topics)
+        # busco los sinonimos de cada topico
+        return topics, sinonimosTopicos
+
+
     def analizar_recursos(self, claves):
         claves = [singularize(clave) for clave in claves]
         engine = Google(license="AIzaSyCvvHb8SYgHvS5gEIQabxuJ0Kl0sYdHl9U", language="en")
@@ -39,6 +50,18 @@ class AnalizadorTopicos:
             texts.append(self.scrapper.buscarHtmlCompleto(url))
 
         topics = tp.analizar(texts)
+
+        print(topics)
+
+        return topics
+
+    def analizar_una_url(self, url):
+        tp = TopicModeling()
+        topics = []
+        texts = []
+        texts.append(self.scrapper.buscarHTML("", url))
+
+        topics = tp.analizar(self.scrapper.buscarHTML("", url))
 
         print(topics)
 
