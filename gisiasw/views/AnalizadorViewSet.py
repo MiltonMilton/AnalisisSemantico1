@@ -21,7 +21,7 @@ class AnalizadorViewSet(viewsets.ModelViewSet):
         analizador = Analisis()
         data = request.data
         resultado = analizador.armarMatrizdeSimilitudes(data.get("claves"), data.get("metodo"), data.get("urls"))
-        response = Response({"status": "ok", "nodes": resultado})
+        response = Response({"status": "ok", "matrices":resultado.get("matrices"), "claves": resultado.get("claves")})
         response["Access-Control-Allow-Origin"] = "*"
 
         return response

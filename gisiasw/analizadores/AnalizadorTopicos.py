@@ -22,13 +22,17 @@ class AnalizadorTopicos:
 
     def analizar_con_urls(self, urls=[]):
         print("TENGO URLS:", urls)
+        topics = []
         # analizo el contenido de los documentos
-        topics = self.analizar_una_url(urls[0]) if len(urls) == 1 else self.analizar_url(urls)
-        # aplico TopicModeling
-        # Extraigo los topicos mas relevantes
-        sinonimosTopicos = self.getSinonimos(topics)
-        # busco los sinonimos de cada topico
-        return topics, sinonimosTopicos
+        for i,url in enumerate(urls):
+            # aplico TopicModeling
+            # Extraigo los topicos mas relevantes
+            topic = self.analizar_una_url(url)
+            # busco los sinonimos de cada topico
+            sinonimosTopicos = self.getSinonimos(topic)
+            topics.append({"topics":topic, "url":url, "sinonimos":sinonimosTopicos})
+        #topics = self.analizar_una_url(urls[0]) if len(urls) == 1 else self.analizar_url(urls)
+        return topics
 
 
     def analizar_recursos(self, claves):
@@ -57,13 +61,9 @@ class AnalizadorTopicos:
 
     def analizar_una_url(self, url):
         tp = TopicModeling()
-        topics = []
-        texts = []
-        texts.append(self.scrapper.buscarHTML("", url))
-
         topics = tp.analizar(self.scrapper.buscarHTML("", url))
 
-        print(topics)
+        print("TOPICS: {0}".format(topics))
 
         return topics
 
@@ -72,6 +72,6 @@ class AnalizadorTopicos:
         for i,topic in enumerate(topics):
             sinonimosXTopics.append(getListaSinonimos(topic.get("word")))
 
-        print(sinonimosXTopics)
+        print("sinonimosXTopics: {0}".format(sinonimosXTopics))
 
         return sinonimosXTopics

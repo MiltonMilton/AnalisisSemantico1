@@ -11,16 +11,15 @@ class Analisis:
         #busco los sinonimos de claves
         cclaves, csinonimos = self.analisisClave.analizar(claves)
         #busco los topicos y sus sinonimos
-        topicos, ctopicos = self.analisisTopico.analizar(claves) if len(urls) == 0 else self.analisisTopico.analizar_con_urls(urls)
+        topicos = self.analisisTopico.analizar_con_urls(urls)
         #construyo la matriz
-        matriz = self.matrix.analizarClaveTopico(claves, topicos, metodo)
+        matrices = self.matrix.analizarClaveTopico(cclaves, csinonimos, topicos, metodo)
         #armo los encabezados
-        encabezadoTopicos =  [topico.get("word") for j, topico in enumerate(topicos)]
+
         #retorno la matriz
 
         return {
                 "claves": cclaves,
-                "topicos": encabezadoTopicos,
-                "matriz": matriz
+                "matrices": matrices
         }
 

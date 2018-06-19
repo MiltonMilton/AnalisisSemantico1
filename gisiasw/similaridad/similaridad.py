@@ -30,6 +30,33 @@ def similaridad(word1, word2, metodo):
         print("Error calculando similitud, se pondera 0")
 
     return res
+def similitudPorAlgoritmo(word1, word2):
+    res = 0
+    try:
+        w1 = wn.synsets(word1)[0]
+        w2 = wn.synsets(word2)[0]
+        return  {
+            "jcn": jcnSimilarity(w1,w2),
+            "lch": lchSimilarity(w1,w2),
+            "lin": linSimilarity(w1,w2),
+            "path": pathSimilarity(w1,w2),
+            "res": resSimilarity(w1,w2),
+            "wup": wupSimilarity(w1,w2),
+            #"byWeight": byWeight(w1,w2)
+        }
+    except Exception as e:
+        print(word1, word2, e.message)
+        print("Error calculando similitud, se pondera 0")
+
+    return {
+        "jcn": 0,
+        "lch": 0,
+        "lin": 0,
+        "path": 0,
+        "res": 0,
+        "wup": 0
+        # "byWeight": byWeight(w1,w2)
+    }
 
 def jcnSimilarity(word1, word2):
     ##Needs the corpus
