@@ -8,17 +8,17 @@ class MatrixManager:
 
         for l, t in enumerate(topicos):
             matriz = self.armarMatrixClaveTopicos(claves, t, metodo)
-            matrizClaveSinonimoTopico = self.armarMatrixClaveSinonimosTopicos(claves, t, metodo)
-            matrizSinonimoClaveTopico = self.armarMatrixSinonimosClaveTopicos(csinonimos, t, metodo)
-            matrizSinonimoClaveSinonimoTopico = self.matrizSinonimoClaveSinonimoTopico(csinonimos, t, metodo)
+            #matrizClaveSinonimoTopico = self.armarMatrixClaveSinonimosTopicos(claves, t, metodo)
+            #matrizSinonimoClaveTopico = self.armarMatrixSinonimosClaveTopicos(csinonimos, t, metodo)
+            #matrizSinonimoClaveSinonimoTopico = self.matrizSinonimoClaveSinonimoTopico(csinonimos, t, metodo)
             encabezadoTopicos = [topico.get("word") for j, topico in enumerate(t.get("topics"))]
             m.append({"url":t.get("url"),
                       "matriz": matriz,
                       "index": l + 1,
                       "topicos": encabezadoTopicos,
-                      "matrizSinonimosTopicos":matrizClaveSinonimoTopico,
-                      "matrizSinonimoClaveTopico":matrizSinonimoClaveTopico,
-                      "matrizSinonimoClaveSinonimoTopico": matrizSinonimoClaveSinonimoTopico,
+                      #"matrizSinonimosTopicos":matrizClaveSinonimoTopico,
+                      #"matrizSinonimoClaveTopico":matrizSinonimoClaveTopico,
+                      #"matrizSinonimoClaveSinonimoTopico": matrizSinonimoClaveSinonimoTopico,
                       })
         print(m)
         return m

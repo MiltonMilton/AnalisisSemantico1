@@ -79,7 +79,7 @@ class TopicModeling:
             doc_lda = lda_model[corpus]
             #print(doc_lda[1])
 
-            return self.format_topics(lda_model.show_topics(1,10,False, False))
+            return self.format_topics(lda_model.show_topics(1,5,False, False))
         except Exception as e:
             print "Error en TopicMOdeling: ", text, ": ", str(e)
             pass

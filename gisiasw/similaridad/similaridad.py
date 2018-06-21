@@ -37,12 +37,13 @@ def similitudPorAlgoritmo(word1, word2):
         w1 = wn.synsets(word1)[0]
         w2 = wn.synsets(word2)[0]
         return  {
-            "jcn": jcnSimilarity(w1,w2),
-            "lch": lchSimilarity(w1,w2),
+            #"jcn": jcnSimilarity(w1,w2),
+            #"lch": lchSimilarity(w1,w2),
             "lin": linSimilarity(w1,w2),
             "path": pathSimilarity(w1,w2),
-            "res": resSimilarity(w1,w2),
+            #"res": resSimilarity(w1,w2),
             "wup": wupSimilarity(w1,w2),
+            "SDE": SDE_Similarity(w1,w2)
             #"byWeight": byWeight(w1,w2)
         }
     except Exception as e:
@@ -50,12 +51,10 @@ def similitudPorAlgoritmo(word1, word2):
         print("Error calculando similitud, se pondera 0")
 
     return {
-        "jcn": 0,
-        "lch": 0,
         "lin": 0,
         "path": 0,
-        "res": 0,
-        "wup": 0
+        "wup": 0,
+        "SDE": 0
         # "byWeight": byWeight(w1,w2)
     }
 
@@ -73,7 +72,7 @@ def linSimilarity(word1, word2):
     ##Needs the corpus
     brown_ic = wordnet_ic.ic('ic-brown.dat')
     semcor_ic = wordnet_ic.ic('ic-semcor.dat')
-    return word1.lin_similarity(word2,brown_ic)
+    return word1.lin_similarity(word2,brown_ic, verbose=True)
 
 def pathSimilarity(word1, word2):
 
@@ -98,31 +97,25 @@ def SDE_Similarity(word1,word2,alfa=0.2,beta=0.45,verbose=False, simulate_root=T
     #h: depth of subcomer in the heirarchical semantic net
     #math.exp(A) es lo mismo que decir: e "elevado a la" A
     
-    try:
-        ss1 = wn.synsets(word1)[0]
-        ss2 = wn.synsets(word2)[0]
-    except Exception as e:
-        print("no se encontraron synsets para: " + word1 + " o " + word2 )
-        return 0
-    need_root = ss1._needs_root()
+    need_root = word1._needs_root()
 
-    subsumers = ss1.lowest_common_hypernyms(
-        ss2,
+    subsumers = word1.lowest_common_hypernyms(
+        word2,
         simulate_root=simulate_root and need_root, use_min_depth=True
     )
     
     if len(subsumers) == 0:
         return None
 
-    subsumer = ss1 if ss1 in subsumers else subsumers[0]
+    subsumer = word1 if word1 in subsumers else subsumers[0]
 
     depth = subsumer.max_depth() + 1
     
-    len1 = ss1.shortest_path_distance(
+    len1 = word1.shortest_path_distance(
         subsumer,
         simulate_root=simulate_root and need_root
     )
-    len2 = ss2.shortest_path_distance(
+    len2 = word2.shortest_path_distance(
         subsumer,
         simulate_root=simulate_root and need_root
     )
