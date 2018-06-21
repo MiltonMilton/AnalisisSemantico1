@@ -3,6 +3,7 @@ from nltk.corpus import wordnet_ic
 import nltk
 nltk.download('brown')
 nltk.download('wordnet_ic')
+import math
 
 
 def similaridad(word1, word2, metodo):
@@ -89,3 +90,58 @@ def wupSimilarity(word1, word2):
 
 def byWeight():
     return 0
+
+def SDE_Similarity(word1,word2,alfa=0.2,beta=0.45,verbose=False, simulate_root=True):
+    #la del paper de sentence similarity de la universidad de Ulster
+    #SDE: Scaling Depth Effect
+    #l: shortest path lenght (desde una palabra hasta el antecesor comun)
+    #h: depth of subcomer in the heirarchical semantic net
+    #math.exp(A) es lo mismo que decir: e "elevado a la" A
+    
+    try:
+        ss1 = wn.synsets(word1)[0]
+        ss2 = wn.synsets(word2)[0]
+    except Exception as e:
+        print("no se encontraron synsets para: " + word1 + " o " + word2 )
+        return 0
+    need_root = ss1._needs_root()
+
+    subsumers = ss1.lowest_common_hypernyms(
+        ss2,
+        simulate_root=simulate_root and need_root, use_min_depth=True
+    )
+    
+    if len(subsumers) == 0:
+        return None
+
+    subsumer = ss1 if ss1 in subsumers else subsumers[0]
+
+    depth = subsumer.max_depth() + 1
+    
+    len1 = ss1.shortest_path_distance(
+        subsumer,
+        simulate_root=simulate_root and need_root
+    )
+    len2 = ss2.shortest_path_distance(
+        subsumer,
+        simulate_root=simulate_root and need_root
+    )
+    if len1 is None or len2 is None:
+        return None
+    #para saber xq comento esto ver:
+    #https://arxiv.org/pdf/1211.4709.pdf
+    #pag.24
+    # len1 += depth
+    # len2 += depth
+    len1 = len1
+    len2 = len2
+    h = depth
+    l = min(len1,len2)
+    numerador = (math.exp(-1 * alfa * l )) * ( math.exp(beta * h) - math.exp(-1 * beta * h))
+    denominador = (math.exp(beta * h) + math.exp(-1 * beta * h))
+    
+    print str(len1) + " " + str(len2) + " " + str(h) + " " + str(l) + " " + str(numerador) + " " + str(denominador) 
+
+    return (numerador/denominador)
+
+
