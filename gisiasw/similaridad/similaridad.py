@@ -133,14 +133,12 @@ def SDE_Similarity(word1,word2,alfa=0.2,beta=0.45,verbose=False, simulate_root=T
     #pag.24
     # len1 += depth
     # len2 += depth
-    len1 = len1
-    len2 = len2
     h = depth
     l = min(len1,len2)
     numerador = (math.exp(-1 * alfa * l )) * ( math.exp(beta * h) - math.exp(-1 * beta * h))
     denominador = (math.exp(beta * h) + math.exp(-1 * beta * h))
     
-    print str(len1) + " " + str(len2) + " " + str(h) + " " + str(l) + " " + str(numerador) + " " + str(denominador) 
+    print "len1" + str(len1) + " len2 " + str(len2) + " h " + str(h) + " l " + str(l) + " numerador " + str(numerador) + " denominador " + str(denominador) 
 
     return (numerador/denominador)
 
