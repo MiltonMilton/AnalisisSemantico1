@@ -1,5 +1,6 @@
 from similaridad import similaridad
 from nltk.corpus import wordnet as wn
+from gisiasw.algoritmos.Synonim import getListaSinonimos
 import random
 import re
 
@@ -25,18 +26,24 @@ pruebas = []
 
 c = 0
 
-while (c < 500):
+while (c < 2000):
     noun = random.choice(nouns)
-    rNoun = random.choice(nouns) #random Noun
-    wup = similaridad(noun,rNoun,"wup")
-    sde = similaridad(noun,rNoun,"sde")
-    lin = similaridad(noun,rNoun,"lin")
-    path = similaridad(noun,rNoun,"path")
-    pruebas.append({"w1":noun, "w2":rNoun,"wup":wup,"sde":sde,"lin":lin,"path":path})
+    sinonimos = getListaSinonimos(noun)
+    if(len(sinonimos)>0):
+        rNoun = random.choice(sinonimos) 
+        wup = similaridad(noun,rNoun,"wup")
+        sde = similaridad(noun,rNoun,"sde")
+        lin = similaridad(noun,rNoun,"lin")
+        path = similaridad(noun,rNoun,"path")
+        pruebas.append({"w1":noun, "w2":rNoun,"wup":wup,"sde":sde,"lin":lin,"path":path})
     c += 1 
 
 print "{" + "pruebas:["
-for prueba in pruebas: 
-    if prueba.get("wup") > 0.8 :print str(prueba) + ","
+for prueba in pruebas:
+    if prueba.get("wup") != None:
+         if prueba.get("sde") != None:
+             if prueba.get("lin") != None:
+                 if prueba.get("path") != None:
+                    print str(prueba) + ","
 print "]}"
 
