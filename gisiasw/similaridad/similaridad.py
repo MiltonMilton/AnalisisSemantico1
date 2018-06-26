@@ -15,7 +15,8 @@ def similaridad(word1, word2, metodo):
         "path": pathSimilarity,
         "res": resSimilarity,
         "wup": wupSimilarity,
-        "byWeight": byWeight
+        "byWeight": byWeight,
+        "sde": SDE_Similarity,
     }
 
     res = 0
@@ -131,7 +132,7 @@ def SDE_Similarity(word1,word2,alfa=0.2,beta=0.45,verbose=False, simulate_root=T
     numerador = (math.exp(-1 * alfa * l )) * ( math.exp(beta * h) - math.exp(-1 * beta * h))
     denominador = (math.exp(beta * h) + math.exp(-1 * beta * h))
     
-    print "len1" + str(len1) + " len2 " + str(len2) + " h " + str(h) + " l " + str(l) + " numerador " + str(numerador) + " denominador " + str(denominador) 
+    # print "len1" + str(len1) + " len2 " + str(len2) + " h " + str(h) + " l " + str(l) + " numerador " + str(numerador) + " denominador " + str(denominador) 
 
     return (numerador/denominador)
 

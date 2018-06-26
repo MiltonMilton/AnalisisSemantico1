@@ -1,0 +1,127 @@
+[nltk_data] Downloading package brown to /home/milton/nltk_data...
+[nltk_data]   Package brown is already up-to-date!
+[nltk_data] Downloading package wordnet_ic to
+[nltk_data]     /home/milton/nltk_data...
+[nltk_data]   Package wordnet_ic is already up-to-date!
+('unique', 'stretch', u"Computing the least common subsumer requires Synset('alone.s.04') and Synset('stretch.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('upper', 'unique', u"Computing the least common subsumer requires Synset('upper_berth.n.01') and Synset('alone.s.04') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('bottle', 'other', u"Computing the least common subsumer requires Synset('bottle.n.01') and Synset('other.a.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('speed', 'anybody', 'list index out of range')
+Error calculando similitud, se pondera 0
+('speed', 'anybody', 'list index out of range')
+Error calculando similitud, se pondera 0
+('speed', 'anybody', 'list index out of range')
+Error calculando similitud, se pondera 0
+('speed', 'anybody', 'list index out of range')
+Error calculando similitud, se pondera 0
+('discount', 'bake', u"Computing the least common subsumer requires Synset('discount.n.01') and Synset('bake.v.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('contribution', 'recover', u"Computing the least common subsumer requires Synset('contribution.n.01') and Synset('recover.v.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('consist', 'common', u"Computing the least common subsumer requires Synset('dwell.v.02') and Synset('park.n.02') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('following', 'forever', u"Computing the least common subsumer requires Synset('following.n.01') and Synset('everlastingly.r.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('phone', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('phone', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('phone', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('phone', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('affair', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('affair', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('affair', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('affair', 'if', 'list index out of range')
+Error calculando similitud, se pondera 0
+('illegal', 'love', u"Computing the least common subsumer requires Synset('illegal.a.01') and Synset('love.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('recover', 'drama', u"Computing the least common subsumer requires Synset('recover.v.01') and Synset('play.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('village', 'nasty', u"Computing the least common subsumer requires Synset('village.n.01') and Synset('nasty.a.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('fessor', 'mood', 'list index out of range')
+Error calculando similitud, se pondera 0
+('fessor', 'mood', 'list index out of range')
+Error calculando similitud, se pondera 0
+('fessor', 'mood', 'list index out of range')
+Error calculando similitud, se pondera 0
+('fessor', 'mood', 'list index out of range')
+Error calculando similitud, se pondera 0
+('you', 'sign', 'list index out of range')
+Error calculando similitud, se pondera 0
+('you', 'sign', 'list index out of range')
+Error calculando similitud, se pondera 0
+('you', 'sign', 'list index out of range')
+Error calculando similitud, se pondera 0
+('you', 'sign', 'list index out of range')
+Error calculando similitud, se pondera 0
+('perty', 'industry', 'list index out of range')
+Error calculando similitud, se pondera 0
+('perty', 'industry', 'list index out of range')
+Error calculando similitud, se pondera 0
+('perty', 'industry', 'list index out of range')
+Error calculando similitud, se pondera 0
+('perty', 'industry', 'list index out of range')
+Error calculando similitud, se pondera 0
+('if', 'match', 'list index out of range')
+Error calculando similitud, se pondera 0
+('if', 'match', 'list index out of range')
+Error calculando similitud, se pondera 0
+('if', 'match', 'list index out of range')
+Error calculando similitud, se pondera 0
+('if', 'match', 'list index out of range')
+Error calculando similitud, se pondera 0
+('nasty', 'restaurant', u"Computing the least common subsumer requires Synset('nasty.a.01') and Synset('restaurant.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('beyond', 'attitude', u"Computing the least common subsumer requires Synset('beyond.r.01') and Synset('attitude.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('bottom', 'physical', u"Computing the least common subsumer requires Synset('bottom.n.01') and Synset('physical.a.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('lady', 'anywhere', u"Computing the least common subsumer requires Synset('lady.n.01') and Synset('anywhere.r.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('land', 'posal', 'list index out of range')
+Error calculando similitud, se pondera 0
+('land', 'posal', 'list index out of range')
+Error calculando similitud, se pondera 0
+('land', 'posal', 'list index out of range')
+Error calculando similitud, se pondera 0
+('land', 'posal', 'list index out of range')
+Error calculando similitud, se pondera 0
+('soft', 'sail', u"Computing the least common subsumer requires Synset('soft.a.01') and Synset('sail.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('duct', 'blem', 'list index out of range')
+Error calculando similitud, se pondera 0
+('duct', 'blem', 'list index out of range')
+Error calculando similitud, se pondera 0
+('duct', 'blem', 'list index out of range')
+Error calculando similitud, se pondera 0
+('duct', 'blem', 'list index out of range')
+Error calculando similitud, se pondera 0
+('focus', 'most', u"Computing the least common subsumer requires Synset('focus.n.01') and Synset('most.a.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('most', 'drop', u"Computing the least common subsumer requires Synset('most.a.01') and Synset('drop.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('many', 'pitch', u"Computing the least common subsumer requires Synset('many.a.01') and Synset('pitch.n.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('cedure', 'talk', 'list index out of range')
+Error calculando similitud, se pondera 0
+('cedure', 'talk', 'list index out of range')
+Error calculando similitud, se pondera 0
+('cedure', 'talk', 'list index out of range')
+Error calculando similitud, se pondera 0
+('cedure', 'talk', 'list index out of range')
+Error calculando similitud, se pondera 0
+('highlight', 'beautiful', u"Computing the least common subsumer requires Synset('highlight.n.01') and Synset('beautiful.a.01') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+('local', 'resist', u"Computing the least common subsumer requires Synset('local.n.01') and Synset('defy.v.02') to have the same part of speech.")
+Error calculando similitud, se pondera 0
+{pruebas:[
+]}
