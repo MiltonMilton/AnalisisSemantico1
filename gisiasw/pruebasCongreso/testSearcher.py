@@ -1,4 +1,4 @@
-from searcher import Searcher
+from gisiasw.pruebasCongreso.searcher import Searcher
 
 s = Searcher()
 
