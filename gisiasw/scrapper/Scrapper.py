@@ -42,7 +42,7 @@ class Scrapper:
 
         [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
 
-        return soup.get_text()
+        return soup.get_text().replace('\n', " ")
 
     def buscarPDF(self, nombre, url):
         fileData = urllib.urlopen(url)

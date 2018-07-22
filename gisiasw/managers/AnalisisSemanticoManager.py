@@ -4,8 +4,6 @@ import spacy
 from gisiasw.algoritmos.TopicModeling import TopicModeling
 
 nltk.download('wordnet')
-from nltk.corpus import wordnet as wn
-from nltk.stem.wordnet import WordNetLemmatizer
 spacy.load('en')
 from spacy.lang.en import English
 parser = English()
@@ -13,7 +11,7 @@ nltk.download('stopwords')
 en_stop = set(nltk.corpus.stopwords.words('english'))
 from gisiasw.scrapper.Scrapper import Scrapper
 from gisiasw.algoritmos.Synonim import getSinonimo, getListaSinonimos
-from gisiasw.formatter.formatter import format
+from gisiasw.formatter import format
 
 scrapper = Scrapper()
 topicModeling = TopicModeling()
