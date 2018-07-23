@@ -4,7 +4,7 @@ s = Searcher()
 
 keys = ["languague", "python"]
 n = 10
-engine = "google"
+engine = "bing"
 
-r = s.search(keys,n,engine)
+r = s.search(keys,engine,n)
 print r
