@@ -31,7 +31,9 @@ class EntityRecognizer:
     def recognizeAndCheckSynset(self,url):
         #reconoce las primeras 5 entidades 
         #que existan y wordnet y tengan el mayor score posible
-        textrazor.api_key = "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
+        #MILTON_API_KEY= "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
+        #MANU_API_KEY = "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
+        textrazor.api_key = "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
 
         client = textrazor.TextRazor(extractors=["entities", "topics"])
         client.set_cleanup_mode("cleanHTML")
