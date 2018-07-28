@@ -27,15 +27,14 @@ def generate_book(ws, data, formatt):
 workbook = xlsxwriter.Workbook('congreso.xlsx')
 
 try:
-    bold = workbook.add_format({'bold': True})
-    worksheet = workbook.add_worksheet("google")
+
     values = get_values()
     google = values.get("google")
-
-    row = 0
+    bing = values.get("bing")
+    bold = workbook.add_format({'bold': True})
+    worksheet = workbook.add_worksheet("google")
     generate_book(worksheet, google, bold)
     worksheet2 = workbook.add_worksheet("bing")
-    bing = values.get("bing")
     generate_book(worksheet2, bing, bold)
 
     workbook.close()
