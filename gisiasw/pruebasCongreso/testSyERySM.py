@@ -1,8 +1,10 @@
 from searcher import Searcher
 from entityRecognizer import EntityRecognizer
+from similarityMeasurer import SimilarityMeasurer
 
 s = Searcher()
 er = EntityRecognizer()
+sm = SimilarityMeasurer()
 
 keys = ["machine","learning","python"]
 n = 10
@@ -10,13 +12,8 @@ n = 10
 rg = s.search(keys,"google",n) #resultados google
 rb = s.search(keys,"bing",n) #resultados bing
 
-
-print "----------google-----------"
 for r in rg:
-    print "url: " + str(r)
-    print "entities: " + str(er.recognizeAndCheckSynset(r))
+    for e in er.recognize(r):
+        for k in keys:
+            print sm.measure(k,e)
 
-print "----------bing-----------"
-for r in rb:
-    print "url: " + str(r)
-    print "entities: " + str(er.recognizeAndCheckSynset(r))
