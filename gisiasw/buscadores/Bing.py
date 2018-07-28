@@ -32,12 +32,12 @@ def generar_consulta_bing(q):
 
 # Metodo que utiliza la libreria beautifulsoup para obtener las urls de la busqueda.
 # Se ejecuta cuando el primer metodo falla
-def recuperar_urls_beautifulsoup(q):
+def recuperar_urls_beautifulsoup(q, n):
     bing = []
     consulta = q.replace(" ", "+")
-    print("https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3&first=60")
+    print("https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3&first=20")
     sauce = urllib2.urlopen(
-        "https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3&first=60").read()
+        "https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3").read()
     soup = bs.BeautifulSoup(sauce, 'lxml')
 
     divs = soup.findAll("li", {"class": "b_algo"})

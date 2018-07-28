@@ -32,7 +32,10 @@ class EntityRecognizer:
         #reconoce las primeras 5 entidades 
         #que existan y wordnet y tengan el mayor score posible
         textrazor.api_key = "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
+
         client = textrazor.TextRazor(extractors=["entities", "topics"])
+        client.set_cleanup_mode("cleanHTML")
+        client.set_classifiers(["textrazor_mediatopics"])
         response = client.analyze_url(url)
         entities = []
         entities95 = []

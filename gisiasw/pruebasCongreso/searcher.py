@@ -26,7 +26,7 @@ class Searcher:
                 urls.append(result.link)
             urls = urls[:n]
         elif engine == "bing":
-            return recuperar_urls_beautifulsoup(listToString(keys))
+            return recuperar_urls_beautifulsoup(listToString(keys), n)
         else:
             print "invalid engine, use google or bing" 
             return urls
