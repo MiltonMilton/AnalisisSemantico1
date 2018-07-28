@@ -35,14 +35,15 @@ def generar_consulta_bing(q):
 def recuperar_urls_beautifulsoup(q, n):
     bing = []
     consulta = q.replace(" ", "+")
-    print("https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3&first=20")
-    sauce = urllib2.urlopen(
-        "https://www.bing.com/search?q=" + consulta + "&qs=n&form=QBLH&sp=-1&pq="+consulta+"&sc=2-0&sk=&cvid=105FD159528E4D039AEB0EA503BE825E").read()
-    soup = bs.BeautifulSoup(sauce, 'lxml')
+    for i in range(1,3):
+        print("https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3&first={0}".format(i*10))
+        sauce = urllib2.urlopen(
+            "https://www.bing.com/search?q=" + consulta + "&qs=n&form=QBLH&sp=-1&pq="+consulta+"&sc=2-0&sk=&cvid=105FD159528E4D039AEB0EA503BE825E&first={0}".format(i*10)).read()
+        soup = bs.BeautifulSoup(sauce, 'lxml')
 
-    divs = soup.findAll("li", {"class": "b_algo"})
-    for unDivs in divs:
-        bing.append(unDivs.find('a').get('href'))
+        divs = soup.findAll("li", {"class": "b_algo"})
+        for unDivs in divs:
+            bing.append(unDivs.find('a').get('href'))
     return bing
 
 #q=machine+learning&qs=AS&pq=machine+&sc=8-8&cvid=2ADFF9FFD60A4198A887E866FE7B8802&sp=1&first=50&FORM=PERE3
