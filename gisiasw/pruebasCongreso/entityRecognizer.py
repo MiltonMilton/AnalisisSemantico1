@@ -1,11 +1,17 @@
 import textrazor
 from nltk.corpus import wordnet as wn
 
+#500 requests diarios cada key
+
+keya="a6ccb809d4fe98c43b3492548298edf0b7d4ceb67aea9c58930eacc9"
+keyb="8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
+key = keya #aca seleccionas la llave
+
 
 class EntityRecognizer:
 
     def recognizeSinFiltrar(self,url): #reconoce todas las entidades
-        textrazor.api_key = "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
+        textrazor.api_key = key
         client = textrazor.TextRazor(extractors=["entities", "topics"])
         response = client.analyze_url(url)
         entities = []
@@ -14,7 +20,7 @@ class EntityRecognizer:
         return list(set(entities)) 
 
     def recognizeFirstFive(self,url): #reconoce las primeras 5 entidades cuyo umbral > 0.75
-        textrazor.api_key = "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
+        textrazor.api_key =  key
         client = textrazor.TextRazor(extractors=["entities", "topics"])
         response = client.analyze_url(url)
         entities75 = []
@@ -31,10 +37,14 @@ class EntityRecognizer:
     def recognizeAndCheckSynset(self,url):
         #reconoce las primeras 5 entidades 
         #que existan y wordnet y tengan el mayor score posible
+<<<<<<< HEAD
+        textrazor.api_key = key
+=======
         #MILTON_API_KEY= "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
         #MANU_API_KEY = "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
         textrazor.api_key = "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
 
+>>>>>>> dd1e7d2552e337dc1adbe34dbcc69ef68086903f
         client = textrazor.TextRazor(extractors=["entities", "topics"])
         client.set_cleanup_mode("cleanHTML")
         client.set_classifiers(["textrazor_mediatopics"])
