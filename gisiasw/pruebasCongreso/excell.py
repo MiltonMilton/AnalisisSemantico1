@@ -21,7 +21,7 @@ def generate_book(ws, data, formatt, merged_format):
             #ws.write(row, cl + 1, g.get("entities")[clss], formatt)
             crow += 1
             for l in range(0,4):
-                ws.write(crow, cl + 1 + l, alg[l])
+                ws.write(crow, cl + 1 + l, alg[l], formatt)
             crow += 1
             for l, m in enumerate(g.get("meassures")):
                 if (g.get("entities")[clss] == m.get("e")):
