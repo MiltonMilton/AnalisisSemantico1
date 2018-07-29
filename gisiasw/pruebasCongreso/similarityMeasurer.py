@@ -10,3 +10,4 @@ class SimilarityMeasurer:
         medidas.append(similaridad(word,entity,"path"))
         return medidas
 
+

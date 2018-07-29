@@ -6,13 +6,15 @@ s = Searcher()
 er = EntityRecognizer()
 sm = SimilarityMeasurer()
 
-def get_values():
-    keys = ["machine","learning","python", "algorithms"]
-    keyss = ["'machine learning'","python", "algorithms"]
-    n = 20
+def get_values(key):
+    #keys = ["machine","learning","python", "algorithms"]
 
-    rg = s.search(keyss,"google",n) #resultados google
-    rb = s.search(keyss,"bing",n) #resultados bing
+    n = 20
+    print("<<<<<<<INITIALIZING GOOGLE>>>>>>>")
+    rg = s.search(key.get("it"),"google",n) #resultados google
+    print("<<<<<<<INITIALIZING BING>>>>>>>")
+    rb = s.search(key.get("it"),"bing",n) #resultados bing
+    keys = key.get("keys")
     google = []
     for r in rg:
         g = {}
