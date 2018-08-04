@@ -37,14 +37,7 @@ class EntityRecognizer:
     def recognizeAndCheckSynset(self,url):
         #reconoce las primeras 5 entidades 
         #que existan y wordnet y tengan el mayor score posible
-<<<<<<< HEAD
         textrazor.api_key = key
-=======
-        #MILTON_API_KEY= "8cdcb70d8ae86e21ac318e3d8cd6fb2b456f6e9f984d39267fa78d32"
-        #MANU_API_KEY = "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
-        textrazor.api_key = "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
-
->>>>>>> dd1e7d2552e337dc1adbe34dbcc69ef68086903f
         client = textrazor.TextRazor(extractors=["entities", "topics"])
         client.set_cleanup_mode("cleanHTML")
         client.set_classifiers(["textrazor_mediatopics"])
@@ -81,6 +74,28 @@ class EntityRecognizer:
                 i = i + 1
             else:
                 return entities[:5] 
-        return entities[:5] 
+        return entities[:5]
+
+    def recognizeAndCheckSynset2(self,url):
+        #set client
+        textrazor.api_key = key
+        client = textrazor.TextRazor(extractors=["entities", "topics"])
+        client.set_cleanup_mode("cleanHTML")
+        client.set_classifiers(["textrazor_mediatopics"])
+        response = client.analyze_url(url)
+        #get entities
+        entities = []
+        aux = []
+        if len(list(set(response.entities()))) == 0: return entities
+        for entity in list(set(response.entities())):
+            if (wn.synsets(entity.id) <> []):
+                aux.append(entity.id)
+                aux = list(set(aux))
+                if len(aux) > len(entities):
+                    entities.append(entity)
+        return sorted(entities, key=lambda entity: entity.relevance_score, reverse =True) 
+            
+
+
          
 
