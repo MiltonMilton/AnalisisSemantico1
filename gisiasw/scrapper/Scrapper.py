@@ -54,7 +54,7 @@ class Scrapper:
         [x.extract() for x in soup.find_all('meta')]
         [x.extract() for x in soup.find_all('noscript')]
 
-        [x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
+        #[x.extract() for x in soup.find_all(text=lambda text: isinstance(text, Comment))]
 
         return soup.get_text().replace('\n', " ")
 

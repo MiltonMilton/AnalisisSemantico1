@@ -9,7 +9,7 @@ sm = SimilarityMeasurer()
 
 
 keys = ["machine","learning"]
-n = 20
+n = 1
 
 rg = s.search(keys,"google",n) #resultados google
 rb = s.search(keys,"bing",n) #resultados bing

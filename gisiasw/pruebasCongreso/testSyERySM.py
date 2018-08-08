@@ -5,11 +5,17 @@ from similarityMeasurer import SimilarityMeasurer
 s = Searcher()
 er = EntityRecognizer()
 sm = SimilarityMeasurer()
+from nltk.stem import WordNetLemmatizer
+import nltk
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+lemmatizer = WordNetLemmatizer()
+
 
 def get_values(key):
     #keys = ["machine","learning","python", "algorithms"]
 
-    n = 20
+    n = 1
     print("<<<<<<<INITIALIZING GOOGLE>>>>>>>")
     rg = s.search(key.get("it"),"google",n) #resultados google
     print("<<<<<<<INITIALIZING BING>>>>>>>")
@@ -19,14 +25,16 @@ def get_values(key):
     for r in rg:
         g = {}
         g["url"] = str(r)
-        entities = er.recognizeAndCheckSynset(r)
-        g["entities"] = entities
+        entities = er.recognizeSinFiltrar(r)
+        g["entities"] = [ {"name": x["long_name"], "relevance": x["relevance"], "wiki":x["wiki"]} for x in entities]
         meassures = []
-        for e in entities:
+        for j, e in enumerate(entities):
             for k in keys:
+                print(nltk.pos_tag(nltk.word_tokenize(e["long_name"])))
                 meassures.append({
-                    "value":sm.measure(k,e),
-                    "e": e,
+                    "value": sm.measure(k, e["long_name"]),
+                    "relevance": e["relevance"],
+                    "e": e["long_name"],
                     "k": k
                 })
         g["meassures"] = meassures
@@ -36,14 +44,17 @@ def get_values(key):
     for r in rb:
         b = {}
         b["url"] = str(r)
-        entities = er.recognizeAndCheckSynset(r)
-        b["entities"] = entities
+        entities = er.recognizeSinFiltrar(r)
+        b["entities"] = [{"name": x["long_name"], "relevance": x["relevance"]} for x in entities]
         meassures = []
-        for e in entities:
+        for j, e in enumerate(entities):
+            print(e["entidad"])
             for k in keys:
+                print(lemmatizer.lemmatize(e.get("long_name")))
                 meassures.append({
-                    "value":sm.measure(k,e),
-                    "e": e,
+                    "value":sm.measure(k,e.get("entidad")),
+                    "relevance": e.get("relevance"),
+                    "e": e.get("long_name"),
                     "k": k
                 })
         b["meassures"] = meassures
