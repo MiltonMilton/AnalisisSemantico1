@@ -6,8 +6,9 @@ def build_graph(concept, key=None, counter=0, k=0, name=None):
         name: [z["type"] for z in concepts]
     })
     build_graph_p(concepts)
-    return  rs
     print(rs)
+    return  rs
+    
 
 def build_graph_p(concepts):
     for k,c in enumerate(concepts):
@@ -15,6 +16,7 @@ def build_graph_p(concepts):
         rs.append({
             c.get("type"):[z["type"] for z in l]
         })
+    
 
 
 
@@ -36,7 +38,7 @@ def get_concepts_From_dbpedia(concept):
     cs = []
     for result in results["results"]["bindings"]:
         cs.append({
-            "type": result["subject"]["value"].split(":")[2],
+            "type": result["subject"]["value"].split(":")[2], #toma el link de dbpedia
             "cat_link":result["subject"]["value"]
         })
 
