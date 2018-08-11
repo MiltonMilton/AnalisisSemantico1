@@ -75,6 +75,6 @@ def get_broaders(entity):
     return cs
 
 
-testEntity = "Mathematics"
+testEntity = "Support_vector_machine"
 
-print get_graph(testEntity,3)
+print get_graph(testEntity,4)
