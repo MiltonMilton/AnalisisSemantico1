@@ -1,8 +1,9 @@
 
-from tree import build_graph
+
 from graphGenerator import get_graph
-from Graph import Graph
+from Graph import find_path, find_all_paths, find_shortest_path
 import Tkinter
+#NAME = "SciPy"
 
 def graph_builder(nombre, nivel):
     graph_nodes = get_graph(nombre, nivel)
@@ -14,25 +15,21 @@ def graph_builder(nombre, nivel):
     for l, v in enumerate(graph_nodes):
         dic.update(v)
 
+    #print(find_path(dic, NAME, "Machine_learning"))
     for key in dic.keys():
         ids.append(key)
         values_g.append(0)
         for l, v in enumerate(dic[key]):
             from_g.append(key)
             to_g.append(v.get("nombre"))
-            values_g.append(v.get("relacion"))
-            ids.append(key)
 
-    graficar(from_g, to_g)
-    #graph = Graph(dic)
-    #print(graph.edges())
+    #graficar(from_g, to_g, nombre)
 
-    return None
+    return dic
 
-def graficar(from_g, to_g):
+def graficar(from_g, to_g, nombre):
     # libraries
     import pandas as pd
-    import numpy as np
     import networkx as nx
     import matplotlib.pyplot as plt
 
@@ -44,9 +41,7 @@ def graficar(from_g, to_g):
     G = nx.from_pandas_dataframe(df, 'from', 'to')
 
     nx.draw(G, with_labels=True, node_size=50, node_color="skyblue",cmap=plt.cm.Blues, node_shape="s", alpha=0.5, linewidths=40)
-    plt.show()
+    plt.savefig("{0}.png".format(nombre), format="PNG")
 
-
-NAME =  "Machine_learning"
-BASE_RESOURCE = "http://dbpedia.org/resource/Support_vector_machine"
-graph_builder(NAME, 2)
+#BASE_RESOURCE = "http://dbpedia.org/resource/Support_vector_machine"
+#graph_builder(NAME, 3)

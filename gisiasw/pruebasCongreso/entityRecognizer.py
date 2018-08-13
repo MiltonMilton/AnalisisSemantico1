@@ -16,7 +16,7 @@ class EntityRecognizer:
         import operator
 
 
-        textrazor.api_key = keyb#"9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
+        textrazor.api_key = key#"9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
         client = textrazor.TextRazor(extractors=["entities", "topics", "relations"])
         words = client.analyze("machine learning python algorithms")
         response = client.analyze_url(url)
@@ -26,13 +26,13 @@ class EntityRecognizer:
 
         entities = []
         for entity in response.entities():
-            print(entity.wikipedia_link, entity.document_id)
             if entity.relevance_score > 0.75:
                 entities.append({
                     "entidad":entity.id.replace(" ", "_"),
                     "relevance":entity.relevance_score,
                     "long_name":entity.id,
-                    "wiki": entity.dbpedia_types
+                    "wiki": entity.wikipedia_link,
+                    "wikidataid": entity.wikidata_id
                 })
 
         newlist = sorted(entities, key=lambda k: k['relevance'], reverse=False)
@@ -127,8 +127,10 @@ class EntityRecognizer:
                 aux = list(set(aux))
                 if len(aux) > len(entities):
                     entities.append(entity)
-        return sorted(entities, key=lambda entity: entity.relevance_score, reverse =True) 
-            
+        return sorted(entities, key=lambda entity: entity.relevance_score, reverse =True)
+
+    def recognizeEntitiesByText(self, text):
+        return None
 
 
 

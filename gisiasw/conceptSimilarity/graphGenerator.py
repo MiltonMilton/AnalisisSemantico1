@@ -75,6 +75,6 @@ def get_broaders(entity):
     return cs
 
 
-testEntity = "Support_vector_machine"
+#testEntity = "Support_vector_machine"
 
-print get_graph(testEntity,4)
+#print get_graph(testEntity,4)
