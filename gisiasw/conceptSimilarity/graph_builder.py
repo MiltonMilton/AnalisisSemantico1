@@ -43,11 +43,10 @@ def graficar(from_g, to_g, nombre):
     nx.draw(G, with_labels=True, node_size=50, node_color="skyblue",cmap=plt.cm.Blues, node_shape="s", alpha=0.5, linewidths=40)
     plt.savefig("{0}.png".format(nombre), format="PNG")
 
-<<<<<<< HEAD
 NAME =  "Support_vector_machine"
 BASE_RESOURCE = "http://dbpedia.org/resource/Mathematics"
 graph_builder(NAME, 1)
-=======
+
 #BASE_RESOURCE = "http://dbpedia.org/resource/Support_vector_machine"
 #graph_builder(NAME, 3)
->>>>>>> 035722b448abfa8c8f2cc693ae921fea352ac218
+
