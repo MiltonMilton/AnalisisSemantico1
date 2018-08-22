@@ -41,12 +41,12 @@ def graficar(from_g, to_g):
     df
 
     # Build your graph
-    G = nx.from_pandas_dataframe(df, 'from', 'to')
+    G = nx.from_pandas_edgelist(df, 'from', 'to')
 
     nx.draw(G, with_labels=True, node_size=50, node_color="skyblue",cmap=plt.cm.Blues, node_shape="s", alpha=0.5, linewidths=40)
     plt.show()
 
 
-NAME =  "Machine_learning"
-BASE_RESOURCE = "http://dbpedia.org/resource/Support_vector_machine"
-graph_builder(NAME, 2)
+NAME =  "Support_vector_machine"
+BASE_RESOURCE = "http://dbpedia.org/resource/Mathematics"
+graph_builder(NAME, 1)

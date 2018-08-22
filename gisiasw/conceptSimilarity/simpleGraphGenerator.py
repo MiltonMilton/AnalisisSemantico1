@@ -9,6 +9,17 @@ def get_graph(entity,levels):
         grafo,entities,already_expanded = get_graph_level(grafo,entities,already_expanded)
     return grafo
 
+def get_entities_by_level(entity,levels):#retorna una lista donde se muestran las entites de cada nivel
+    grafo = []
+    already_expanded = []
+    entities = []
+    entitiesByLevel = {}
+    entities.append(entity)
+    for i in range(levels): #no uso el indice
+        entitiesByLevel[i]=entities
+        grafo,entities,already_expanded = get_graph_level(grafo,entities,already_expanded)
+    return entitiesByLevel
+
 
 
 def get_graph_level(grafo,entities,already_expanded_in):
@@ -27,9 +38,9 @@ def get_graph_level(grafo,entities,already_expanded_in):
                 broaders.append(e)
             aux = []
             for node in broaders:
-                aux.append({"nombre":node,"relacion":-1}) #broader se representa con -1
+                aux.append(node)
             for node in subjects:
-                aux.append({"nombre":node,"relacion": 1}) #subject se representa con  1
+                aux.append(node)
             grafo.append({entity:aux})
             aux2 = list(set(subjects + broaders))
             aux3 = aux2 + aux3
@@ -73,7 +84,3 @@ def get_broaders(entity):
     for result in results["results"]["bindings"]:
         cs.append(result["broader"]["value"].split(":")[2])
     return cs
-
-#testEntity = "Support_vector_machine"
-
-#print get_graph(testEntity,4)
