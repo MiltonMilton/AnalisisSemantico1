@@ -1,7 +1,7 @@
 import textrazor
 from nltk.corpus import wordnet as wn
-from sematch.semantic.similarity import EntitySimilarity
-sim = EntitySimilarity()
+#from sematch.semantic.similarity import EntitySimilarity
+#sim = EntitySimilarity()
 
 #500 requests diarios cada key
 
@@ -56,7 +56,23 @@ class EntityRecognizer:
             if entity.relevance_score > 0.20: entities20.append({"Entidad":entity.id, "Relevance Score":entity.relevance_score})
         if len(list(set(entities75))) > 4: return list(set(entities75))[:5]       
         elif len(list(set(entities50))) > 4: return list(set(entities50))[:5]
-        else: return list(set(entities20))[:5]    
+        else: return list(set(entities20))[:5]  
+
+    
+    def recognizeFirst5(self,url): #reconoce las primeras 5 entidades cuyo umbral > 0.75
+        textrazor.api_key =  key
+        client = textrazor.TextRazor(extractors=["entities", "topics"])
+        response = client.analyze_url(url)
+        entities75 = []
+        entities50 = []
+        entities20 = []
+        for entity in response.entities():
+            if entity.relevance_score > 0.75: entities75.append(entity.id)
+            if entity.relevance_score > 0.50: entities50.append(entity.id)
+            if entity.relevance_score > 0.20: entities20.append(entity.id)
+        if len(list(set(entities75))) > 4: return list(set(entities75))[:5]       
+        elif len(list(set(entities50))) > 4: return list(set(entities50))[:5]
+        else: return list(set(entities20))[:5]  
 
     def recognizeAndCheckSynset(self,url):
         #reconoce las primeras 5 entidades 

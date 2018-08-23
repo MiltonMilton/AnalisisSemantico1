@@ -1,17 +1,17 @@
 from simpleGraphGenerator import get_graph
 
-def distancia_key_entity(key,entity,levels = 5):
+def distancia_key_entity(key,entity,levels = 4):
     g = get_graph(key,levels)
     dic = {}
     for l, v in enumerate(g):
         dic.update(v)
-    print "llego"
-    print len(g)
+    # print "llego"
+    # print len(g)
     #print dic
     paths = find_all_paths(dic,key,entity)
     #print paths
-    print min(paths, key= len)
-    print max(paths, key= len)
+    # print min(paths, key= len)
+    # print max(paths, key= len)
     
     return min(paths, key= len)
 

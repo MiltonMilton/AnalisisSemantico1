@@ -23,7 +23,7 @@ print "medidas = wup, sde, lin, path #similarities"
 for r in rg:
     print "<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
     print "url: " + str(r)
-    entities = er.recognizeAndCheckSynset(r)
+    entities = er.recognizeFirstFive
     print "entities: " + str(entities)
     for clave in keys:
         for entity in entities:
@@ -32,7 +32,7 @@ for r in rg:
 print "----------bing-----------"
 for r in rb:
     print "url: " + str(r)
-    entities = er.recognizeAndCheckSynset(r)
+    entities = er.recognizeFirstFive
     print "entities: " + str(entities)
     for clave in keys:
         for entity in entities:
