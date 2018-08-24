@@ -1,11 +1,14 @@
 import xlsxwriter
-from simpleGraphGenerator import get_entities_by_level_sin_acumular as gebl
-from simpleGraphGenerator import dke2 as dke
+from sgg import get_entities_by_level as gebl
+from sgg import dke_niveles as dke
 #busquedas
 from gisiasw.pruebasCongreso.searcher import Searcher
 #textrazor
 from gisiasw.pruebasCongreso.entityRecognizer import EntityRecognizer
 
+#medimos tiempo
+import time
+start = time.time()
 #inicializamos documentos
 
 workbook = xlsxwriter.Workbook("pruebaCongreso.xlsx")
@@ -13,6 +16,8 @@ google_sheet = workbook.add_worksheet()
 bing_sheet = workbook.add_worksheet()
 
 keys = ["Support_vector_machine","tutorial"] #lo idea es que las keys sean entities de dbpedia
+
+print "claves de busqueda: " +  str(keys)
 
 #busqueda
 s = Searcher()
@@ -68,8 +73,10 @@ def escribir_hoja(grafos,results,worksheet):
 escribir_hoja(grafos,google_results,google_sheet)
 escribir_hoja(grafos,bing_results,bing_sheet)
 
+#finaliza medida de tiempo
+end = time.time()
+print "duracion de la ejecucion de la prueba: " + str(end - start)
 #guardamos archivo
-
 workbook.close()            
 
             
