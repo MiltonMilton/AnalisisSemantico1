@@ -35,7 +35,7 @@ def generar_consulta_bing(q):
 def recuperar_urls_beautifulsoup(q, n):
     bing = []
     consulta = q.replace(" ", "+")
-    for i in range(1,3):
+    for i in range(1,2):
         print("https://www.bing.com/search?q=" + consulta + "&qs=n&cvid=A8821870F285403DAC8D935AD548A053&sp=3&first={0}".format(i*10))
         sauce = urllib2.urlopen(
             "https://www.bing.com/search?q=" + consulta + "&qs=n&form=QBLH&sp=-1&pq="+consulta+"&sc=2-0&sk=&cvid=105FD159528E4D039AEB0EA503BE825E&first={0}".format(i*10)).read()

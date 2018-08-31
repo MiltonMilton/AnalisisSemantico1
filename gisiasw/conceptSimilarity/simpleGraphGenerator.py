@@ -54,27 +54,14 @@ def get_entities_by_level_sin_acumular(entity,levels):#retorna una lista donde s
 
 
 def get_graph_level(grafo,entities,already_expanded_in):
-    
-    subjects= []
-    broaders = []
-    aux2 = []
+
     aux3 = []
     for entity in entities:
-        
-        aux2 = []
         if entity not in already_expanded_in:
-            for e in get_subjects(entity):
-                subjects.append(e)
-            for e in get_broaders(entity):
-                broaders.append(e)
-            aux = []
-            for node in broaders:
-                aux.append(node)
-            for node in subjects:
-                aux.append(node)
+            print("Buscando informacion de la entidad: {0} "+ entity)
+            aux = get_subjects(entity)
             grafo.append({entity:aux})
-            aux2 = list(set(subjects + broaders))
-            aux3 = aux2 + aux3
+            aux3 = aux
     already_expanded_out = list(set(already_expanded_in + entities))
     entities = list(set(entities + aux3))
     
@@ -82,20 +69,41 @@ def get_graph_level(grafo,entities,already_expanded_in):
 
 def get_subjects(entity):
     query = """
-        SELECT ?subject
-        WHERE { 
-            <http://dbpedia.org/resource/"""+entity+"""> dct:subject ?subject
+        PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX  dbc:  <http://dbpedia.org/resource/Category:>
+        PREFIX  dct:  <http://purl.org/dc/terms/>
+        PREFIX  dbr: <http://dbpedia.org/resource/>
+        
+        SELECT  distinct ?subject
+        WHERE  {   
+                { SELECT  ?subject
+                    WHERE   { ?subject dct:subject/skos:broader <http://dbpedia.org/resource/Category:"""+entity+"""> }
+                }
+                UNION
+                { SELECT  ?subject
+                    WHERE { <http://dbpedia.org/resource/Category:"""+entity+"""> skos:broader  ?subject }
+                }
+                UNION
+                { SELECT  ?subject
+                    WHERE { <http://dbpedia.org/resource/"""+entity+"""> dct:subject  ?subject 
+                    FILTER( regex(str(?subject), "^(?!http://dbpedia.org/resource/Category:"""+entity+""")"))
+                }
+            }
+                
         }
     """
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     sparql.setQuery(query=query)
-
+    #print(query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
     cs = []
 
     for result in results["results"]["bindings"]:
-        cs.append(result["subject"]["value"].split(":")[2])
+        if (result["subject"]["value"].find("/Category:") == -1):
+            cs.append(result["subject"]["value"].split("/resource/")[1])
+        else:
+            cs.append(result["subject"]["value"].split(":")[2])
     return cs
 
 def get_broaders(entity):
@@ -107,11 +115,33 @@ def get_broaders(entity):
     """
     sparql = SPARQLWrapper("http://dbpedia.org/sparql")
     sparql.setQuery(query=query)
-
+    #print(query)
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
     cs = []
 
     for result in results["results"]["bindings"]:
         cs.append(result["broader"]["value"].split(":")[2])
+    return cs
+
+
+def get_is_sub_isbroader(entity):
+    query = """
+                PREFIX dbc: <http://dbpedia.org/resource/Category:>
+                PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+                PREFIX dct:    <http://purl.org/dc/terms/>
+                SELECT ?res WHERE {
+                    ?res dct:subject/skos:broader <http://dbpedia.org/resource/Category:""" + entity + """> .
+                }
+            """
+    sparql = SPARQLWrapper("http://dbpedia.org/sparql")
+    sparql.setQuery(query=query)
+    #print(query)
+
+    sparql.setReturnFormat(JSON)
+    results = sparql.query().convert()
+    cs = []
+
+    for result in results["results"]["bindings"]:
+        cs.append(result["res"]["value"].split("/resource/")[1])
     return cs

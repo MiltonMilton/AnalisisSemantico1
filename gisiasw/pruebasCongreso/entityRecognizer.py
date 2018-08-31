@@ -12,6 +12,35 @@ key = keya #aca seleccionas la llave
 
 class EntityRecognizer:
 
+    def recognizeText(self, word):
+        textrazor.api_key = key  # "9ef66800304909b23755c07c8cffda50a1f4bfc2462327c32d3b65d7"
+        client = textrazor.TextRazor(extractors=["entities", "topics", "relations"])
+        response = client.analyze(word)
+        entities = []
+        for entity in response.entities():
+            if entity.relevance_score > 0:
+                entities.append({
+                    "entidad": entity.id.replace(" ", "_"),
+                    "relevance": entity.relevance_score,
+                    "long_name": entity.id,
+                    "wiki": entity.wikipedia_link,
+                    "wikidataid": entity.wikidata_id
+                })
+
+        newlist = sorted(entities, key=lambda k: k['relevance'], reverse=False)
+
+        distinct_list = {x['entidad']: x for x in newlist}.values()
+
+        distinct_list = sorted(distinct_list, key=lambda k: k['relevance'], reverse=True)
+
+        l = []
+        for i, dl in enumerate(distinct_list):
+            l.append(dl.get("entidad"))
+
+        return l[:10]
+
+
+
     def recognizeSinFiltrar(self,url): #reconoce todas las entidades
         import operator
 
@@ -65,14 +94,29 @@ class EntityRecognizer:
         response = client.analyze_url(url)
         entities75 = []
         entities50 = []
-        entities20 = []
+        es = []
         for entity in response.entities():
-            if entity.relevance_score > 0.75: entities75.append(entity.id)
-            if entity.relevance_score > 0.50: entities50.append(entity.id)
-            if entity.relevance_score > 0.20: entities20.append(entity.id)
-        if len(list(set(entities75))) > 4: return list(set(entities75))[:5]       
-        elif len(list(set(entities50))) > 4: return list(set(entities50))[:5]
-        else: return list(set(entities20))[:5]  
+            if entity.relevance_score > 0.6:
+                es.append({
+                    "entidad":entity.id.replace(" ", "_"),
+                    "relevance":entity.relevance_score,
+                    "long_name":entity.id,
+                    "wiki": entity.wikipedia_link,
+                    "wikidataid": entity.wikidata_id
+                })
+
+        newlist = sorted(es, key=lambda k: k['relevance'], reverse=False)
+
+        distinct_list = {x['entidad']: x for x in newlist}.values()
+
+        distinct_list = sorted(distinct_list, key=lambda k: k['relevance'], reverse=True)
+        f = []
+
+        for l, d in enumerate(distinct_list):
+            f.append(d.get("entidad"))
+
+        print(f)
+        return f[:10]
 
     def recognizeAndCheckSynset(self,url):
         #reconoce las primeras 5 entidades 

@@ -75,11 +75,3 @@ def get_broaders(entity):
     return cs
 
 #testEntity = "Support_vector_machine"
-
-<<<<<<< HEAD
-#print get_graph(testEntity,4)
-=======
-#testEntity = "Support_vector_machine"
-
-#print get_graph(testEntity,4)
->>>>>>> 035722b448abfa8c8f2cc693ae921fea352ac218

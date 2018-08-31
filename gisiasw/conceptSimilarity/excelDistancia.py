@@ -6,6 +6,7 @@ from gisiasw.pruebasCongreso.searcher import Searcher
 #textrazor
 from gisiasw.pruebasCongreso.entityRecognizer import EntityRecognizer
 
+entity_recognizer = EntityRecognizer()
 #medimos tiempo
 import time
 start = time.time()
@@ -14,21 +15,22 @@ start = time.time()
 workbook = xlsxwriter.Workbook("pruebaCongreso.xlsx")
 google_sheet = workbook.add_worksheet()
 bing_sheet = workbook.add_worksheet()
-
-keys = ["Support_vector_machine","tutorial"] #lo idea es que las keys sean entities de dbpedia
+keys = entity_recognizer.recognizeText("machine learning python algorithms")
+#keys = ["Machine_learning","Algorithm", "Python_(programming_language)"] #lo idea es que las keys sean entities de dbpedia
 
 print "claves de busqueda: " +  str(keys)
 
 #busqueda
 s = Searcher()
 n = 20
-google_results = s.search(keys,"google",n) #resultados google
-bing_results = s.search(keys,"bing",n) #resultados bing
+clave = ["machine_learning","python","algorithms"]
+google_results = s.search("machine learning python algorithms","google",n) #resultados google
+bing_results = []#s.search(clave,"bing",n) #resultados bing
 
 grafos = []
 
 #generar grafos de las keys por niveles (N niveles, desde nivel 0 a nivel N-1)
-N = 6
+N = 5
 for key in keys:
     print "generando grafo de: " + str(key)
     grafos.append(gebl(key,N))
@@ -41,12 +43,9 @@ def escribir_hoja(grafos,results,worksheet):
     #el documento se va escribiendo por filas (rows)
     for result in results:
         entity_recognizer = EntityRecognizer()
-        entities = entity_recognizer.recognizeFirst5(result)
+        entities_ = entity_recognizer.recognizeFirst5(result)
         #remplazamos los espacios blancos por underscores para encontrarlos en los grafos
-        entities_ = []
-        for entity in entities:
-            entities_.append(str(entity).replace(" ","_"))
-        print entities_
+        #entities_ = []
         #recurso
         print "analizando recurso: " + str(result)  
         worksheet.write(row,0,str(result))
