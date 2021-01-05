@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/manuel2287/semanticnetwork#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "react": "^16.4.0",
     "vis": "^4.21.0"
   }
