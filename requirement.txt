@@ -73,7 +73,7 @@ pathlib==1.0.1
 pathlib2==2.3.2
 pexpect==4.5.0
 pickleshare==0.7.4
-pip==10.0.1
+pip==19.2
 plac==0.9.6
 pluggy==0.6.0
 preshed==1.0.0
